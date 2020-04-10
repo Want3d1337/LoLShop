@@ -11,7 +11,8 @@
     <title>@this.ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/colors/dark.css" id="colors" asp-append-version="true">
-    <link rel="shortcut icon" href="https://res.cloudinary.com/cookwithme-cloud/image/upload/v1565711673/common/favicon_ydl4et.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586506433/little_icon_lab9bb.png" />
 </head>
 <body>
     <!-- Wrapper -->
@@ -27,7 +28,21 @@
                         <h1><a href="/"><img src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586424587/logo2_rqrhzk.png" alt="LoL Shop" /></a></h1>
                     </div>
                 </div>
-                    <div class="thirteen columns navigation">
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <div class="eleven columns navigation">
+                        <nav id="navigation" class="menu nav-collapse">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/Users/Account">Account</a></li>
+                                <li><a href="/Identity/Account/Logout">Logout</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                }
+                else
+                {
+                    <div class="eleven columns navigation">
                         <nav id="navigation" class="menu nav-collapse">
                             <ul>
                                 <li><a href="/">Home</a></li>
@@ -36,6 +51,7 @@
                             </ul>
                         </nav>
                     </div>
+                }
             </div>
             <!-- Container / End -->
         </header>
