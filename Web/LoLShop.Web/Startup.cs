@@ -23,6 +23,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
+    using Account = CloudinaryDotNet.Account;
+
     public class Startup
     {
         private readonly IConfiguration configuration;
