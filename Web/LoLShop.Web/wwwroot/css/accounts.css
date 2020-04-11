@@ -1,4 +1,20 @@
-.accounts-text {
-    margin-bottom: 20px;
-    margin-top: 10px;
+
+a:hover
+{
+    text-decoration:none;
+}
+.account-text {
+    margin: 10px 0px;
+    font-size: 24px;
+    color: #bf0d0d;
+    text-align: center;
+}
+.account-price {
+    font-size: 16px;
+    color: #53a24e;
+    text-align: center;
+}
+.account-button {
+    margin-top:30px;
+    text-align:center;
 }
