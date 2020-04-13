@@ -26,6 +26,7 @@
                 SellerId = user.Id,
                 Username = inputModel.Username,
                 Password = inputModel.Password,
+                Region = inputModel.Region,
             };
 
             await this.accountsRepository.AddAsync(account);
