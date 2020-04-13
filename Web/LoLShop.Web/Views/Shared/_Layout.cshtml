@@ -40,6 +40,10 @@
                                 <li><a href="/Accounts/All">Accounts</a></li>
                                 <li><a href="/Users/Account">My Account</a></li>
                                 <li><a href="/Identity/Account/Logout">Logout</a></li>
+                                @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                                {
+                                    <li><a href="/Administration/Panel/Index">Administration</a></li>
+                                }
                             </ul>
                         </nav>
                     </div>

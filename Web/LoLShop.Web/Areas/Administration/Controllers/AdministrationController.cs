@@ -1,5 +1,6 @@
 ﻿namespace LoLShop.Web.Areas.Administration.Controllers
 {
+
     using LoLShop.Common;
     using LoLShop.Web.Controllers;
 
