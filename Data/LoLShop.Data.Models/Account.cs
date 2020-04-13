@@ -25,7 +25,7 @@
         public int RiotPoints { get; set; }
 
         [Required]
-        public int SellerId { get; set; }
+        public string SellerId { get; set; }
 
         [Required]
         public string Username { get; set; }

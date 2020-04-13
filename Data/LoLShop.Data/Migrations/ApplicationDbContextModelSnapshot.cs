@@ -45,8 +45,9 @@ namespace LoLShop.Data.Migrations
                     b.Property<int>("RiotPoints")
                         .HasColumnType("int");
 
-                    b.Property<int>("SellerId")
-                        .HasColumnType("int");
+                    b.Property<string>("SellerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SkinsCount")
                         .HasColumnType("int");
@@ -57,7 +58,7 @@ namespace LoLShop.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("SoldAccounts");
                 });
 
             modelBuilder.Entity("LoLShop.Data.Models.ApplicationRole", b =>

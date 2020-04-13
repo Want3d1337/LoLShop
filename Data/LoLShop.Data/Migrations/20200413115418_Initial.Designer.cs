@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoLShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200411131810_AddingAccountsDatabase")]
-    partial class AddingAccountsDatabase
+    [Migration("20200413115418_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,8 +47,9 @@ namespace LoLShop.Data.Migrations
                     b.Property<int>("RiotPoints")
                         .HasColumnType("int");
 
-                    b.Property<int>("SellerId")
-                        .HasColumnType("int");
+                    b.Property<string>("SellerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SkinsCount")
                         .HasColumnType("int");
@@ -59,7 +60,7 @@ namespace LoLShop.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("SoldAccounts");
                 });
 
             modelBuilder.Entity("LoLShop.Data.Models.ApplicationRole", b =>

@@ -24,7 +24,7 @@
         {
         }
 
-        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Account> SoldAccounts { get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 

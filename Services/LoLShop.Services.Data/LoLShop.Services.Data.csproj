@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\LoLShop.Data.Common\LoLShop.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\LoLShop.Data.Models\LoLShop.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\LoLShop.Web.ViewModels\LoLShop.Web.ViewModels.csproj" />
     <ProjectReference Include="..\LoLShop.Services.Mapping\LoLShop.Services.Mapping.csproj" />
   </ItemGroup>
 
