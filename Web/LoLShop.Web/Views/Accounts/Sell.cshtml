@@ -1,0 +1,40 @@
+﻿@model LoLShop.Web.ViewModels.Accounts.SellAccountInputModel;
+
+<hr />
+
+<h1 class="sell-title">Sell your account to us!</h1>
+<h2 class="sell-undertitle">Fill this blank:</h2>
+
+        <div class="form-page-content">
+            <div class="form">
+                <form method="post">
+                    <div class="form-fields">
+                        <span asp-validation-for="ChampionsCount" class="text-danger"></span>
+                        <input asp-for="ChampionsCount" type="text" placeholder="Champions Count">
+                    </div>
+                    <div class="form-fields">
+                        <span asp-validation-for="SkinsCount" class="text-danger"></span>
+                        <input asp-for="SkinsCount" type="text" placeholder="Skins Count">
+                    </div>
+                    <div class="form-fields">
+                        <span asp-validation-for="BlueEssence" class="text-danger"></span>
+                        <input asp-for="BlueEssence" type="text" placeholder="Blue Essence" />
+                    </div>
+                    <div class="form-fields">
+                        <span asp-validation-for="RiotPoints" class="text-danger"></span>
+                        <input asp-for="RiotPoints" type="text" placeholder="Riot Points">
+                    </div>
+                    <div class="form-fields">
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                        <input asp-for="Username" type="text" placeholder="Account Username">
+                    </div>
+                    <div class="form-fields">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <input asp-for="Password" type="password" placeholder="Account Password">
+                    </div>
+                    <div class="col justify-content-center">
+                        <button class="btn btn-danger btn-lg" type="submit" asp-area="" asp-controller="Accounts" asp-action="Sell">Sell!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
