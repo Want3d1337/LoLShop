@@ -79,6 +79,7 @@
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddTransient<IAccountsService, AccountsService>();
             services.AddTransient<IApprovedAccountsService, ApprovedAccountsService>();
+            services.AddTransient<IJobsService, JobsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

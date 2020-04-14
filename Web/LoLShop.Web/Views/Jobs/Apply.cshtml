@@ -1,45 +1,53 @@
-﻿<hr />
+﻿@model LoLShop.Web.ViewModels.Jobs.ApplicationInputModel;
+
+<hr />
 <h1 class="jobs-title">Apply for a job</h1>
 <h2 class="jobs-under-title">Fill the form below and start earning money!</h2>
 
-<form>
+<form method="post">
     <div class="form-row job-rows-margin">
         <div class="col job-cols-leftmargin">
+            <span asp-validation-for="Age" class="text-danger"></span>
             <label for="AgeInput">Age:</label>
-            <input type="number" class="form-control" placeholder="Age...">
+            <input asp-for="Age" type="number" class="form-control" placeholder="Age...">
         </div>
         <div class="col">
+            <span asp-validation-for="Name" class="text-danger"></span>
             <label for="NameInput">Name:</label>
-            <input type="text" class="form-control" placeholder="Name...">
+            <input asp-for="Name" type="text" class="form-control" placeholder="Name...">
         </div>
         <div class="col job-cols-rightmargin">
+            <span asp-validation-for="Country" class="text-danger"></span>
             <label for="CountryInput">Country:</label>
-            <input type="text" class="form-control" placeholder="Country...">
+            <input asp-for="Country" type="text" class="form-control" placeholder="Country...">
         </div>
     </div>
     <div class="form-row job-rows-margin">
         <div class="col job-cols-leftmargin">
             <label for="PositionInput">Job Position:</label>
-            <select class="form-control" id="selectPosition">
-                <option>Booster</option>
-                <option>Coach</option>
+            <select asp-for="Position" class="form-control" id="selectPosition">
+                <option value="Booster">Booster</option>
+                <option value="Coach">Coach</option>
             </select>
         </div>
         <div class="col">
+            <span asp-validation-for="Rank" class="text-danger"></span>
             <label for="RankInput">Current Rank:</label>
-            <input type="text" class="form-control" placeholder="Rank...">
+            <input asp-for="Rank" type="text" class="form-control" placeholder="Rank...">
         </div>
         <div class="col job-cols-rightmargin">
+            <span asp-validation-for="Champions" class="text-danger"></span>
             <label for="ChampionsInput">Main Champions:</label>
-            <input type="text" class="form-control" placeholder="Champions...">
+            <input asp-for="Champions" type="text" class="form-control" placeholder="Champions...">
         </div>
     </div>
     <div class="form-group job-rows-margin job-cols-leftmargin job-cols-rightmargin">
+        <span asp-validation-for="Description" class="text-danger"></span>
         <label for="DescriptionInput">Why should we choose you?Tell us more about yourself:</label>
-        <textarea class="form-control" id="descriptionArea" rows="3"></textarea>
+        <textarea asp-for="Description" class="form-control" id="descriptionArea" rows="3"></textarea>
+    </div>
+    <div class="account-button" style="margin-bottom:30px;">
+        <button class="btn btn-primary btn-lg" type="submit" asp-area="" asp-controller="Jobs" asp-action="Apply">SEND APPLICATION</button>
     </div>
 </form>
 
-<div class="account-button" style="margin-bottom:30px;">
-    <button class="btn btn-primary btn-lg" type="submit" asp-controller="Accounts" asp-action="Apply">SEND APPLICATION</button>
-</div>
