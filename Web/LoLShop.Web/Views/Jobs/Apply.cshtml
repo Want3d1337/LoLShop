@@ -1,0 +1,45 @@
+﻿<hr />
+<h1 class="jobs-title">Apply for a job</h1>
+<h2 class="jobs-under-title">Fill the form below and start earning money!</h2>
+
+<form>
+    <div class="form-row job-rows-margin">
+        <div class="col job-cols-leftmargin">
+            <label for="AgeInput">Age:</label>
+            <input type="number" class="form-control" placeholder="Age...">
+        </div>
+        <div class="col">
+            <label for="NameInput">Name:</label>
+            <input type="text" class="form-control" placeholder="Name...">
+        </div>
+        <div class="col job-cols-rightmargin">
+            <label for="CountryInput">Country:</label>
+            <input type="text" class="form-control" placeholder="Country...">
+        </div>
+    </div>
+    <div class="form-row job-rows-margin">
+        <div class="col job-cols-leftmargin">
+            <label for="PositionInput">Job Position:</label>
+            <select class="form-control" id="selectPosition">
+                <option>Booster</option>
+                <option>Coach</option>
+            </select>
+        </div>
+        <div class="col">
+            <label for="RankInput">Current Rank:</label>
+            <input type="text" class="form-control" placeholder="Rank...">
+        </div>
+        <div class="col job-cols-rightmargin">
+            <label for="ChampionsInput">Main Champions:</label>
+            <input type="text" class="form-control" placeholder="Champions...">
+        </div>
+    </div>
+    <div class="form-group job-rows-margin job-cols-leftmargin job-cols-rightmargin">
+        <label for="DescriptionInput">Why should we choose you?Tell us more about yourself:</label>
+        <textarea class="form-control" id="descriptionArea" rows="3"></textarea>
+    </div>
+</form>
+
+<div class="account-button" style="margin-bottom:30px;">
+    <button class="btn btn-primary btn-lg" type="submit" asp-controller="Accounts" asp-action="Apply">SEND APPLICATION</button>
+</div>

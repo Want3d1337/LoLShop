@@ -59,3 +59,26 @@ a:hover
     margin-top:70px;
     font-size:20px;
 }
+.jobs-title {
+    text-align:center;
+    margin-top:120px;
+}
+.jobs-under-title {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+    text-align: center;
+    color: #9494a4;
+}
+.application-form {
+    width:300px;
+}
+.job-rows-margin {
+    margin-top:20px;
+}
+.job-cols-leftmargin {
+    margin-left: 250px;
+}
+.job-cols-rightmargin {
+    margin-right: 250px;
+}

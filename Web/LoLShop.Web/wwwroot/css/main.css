@@ -388,23 +388,6 @@ li p {
 /* #Forms
 ================================================== */
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-textarea,
-select {
-    padding: 10px 12px;
-    outline: none;
-    font-size: 13px;
-    color: #777;
-    margin: 0;
-    max-width: 100%;
-    display: block;
-    background-color: #fff;
-    border: 1px solid #e8e8e8;
-    font-weight: 600;
-}
-
 select {
     padding: 0;
 }
