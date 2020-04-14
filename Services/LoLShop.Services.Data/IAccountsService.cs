@@ -12,5 +12,7 @@ namespace LoLShop.Services.Data
     public interface IAccountsService
     {
         Task CreateAsync(SellAccountInputModel inputModel, ApplicationUser user);
+
+        Account GetFirstAccount();
     }
 }

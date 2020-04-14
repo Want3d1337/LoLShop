@@ -1,10 +1,13 @@
 ﻿namespace LoLShop.Services.Data
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
+
     using LoLShop.Data.Common.Repositories;
     using LoLShop.Data.Models;
     using LoLShop.Web.ViewModels.Accounts;
+
 
     public class AccountsService : IAccountsService
     {
@@ -31,6 +34,11 @@
 
             await this.accountsRepository.AddAsync(account);
             await this.accountsRepository.SaveChangesAsync();
+        }
+
+        public Account GetFirstAccount()
+        {
+            return this.accountsRepository.All().FirstOrDefault();
         }
     }
 }

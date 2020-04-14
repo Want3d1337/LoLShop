@@ -34,3 +34,22 @@ a:hover
 .form-fields {
     margin-bottom: 25px;
 }
+.panel-title {
+    margin-top: 20px;
+    text-align: center;
+}
+.panel-text {
+    margin-left: 60px;
+}
+.list-group {
+    max-width: 400px;
+}
+.card {
+    background-color:#303030;
+}
+.card-paragraph {
+    margin-left:10px;
+}
+.card-body {
+    text-align:center;
+}
