@@ -14,5 +14,7 @@ namespace LoLShop.Services.Data
         Task CreateAsync(SellAccountInputModel inputModel, ApplicationUser user);
 
         Account GetFirstAccount();
+
+        Task RemoveAccount(string Username);
     }
 }

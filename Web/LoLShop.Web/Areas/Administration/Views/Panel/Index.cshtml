@@ -4,6 +4,13 @@
 <h1 class="panel-title">Administration Panel</h1>
 <h2 class="panel-text">Accounts</h2>
 
+@if (string.IsNullOrEmpty(Model.Username))
+{
+    <h3 class="no-accounts-text">There are currently no accounts to approve!</h3>
+}
+
+else
+{
 <div class="card" style="width: 18rem; margin-left:30px; color:#fff; margin-top:30px;">
     <img class="card-img-top" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586819541/yasuo_s6iikx.jpg" alt="Card image cap">
     <p class="card-paragraph" style="margin-top:10px;">Region: @Model.Region</p>
@@ -15,6 +22,7 @@
     <p class="card-paragraph">Password: @Model.Password</p>
     <div class="card-body">
         <a href="" class="btn btn-primary btn-lg">Approve</a>
-        <a href="" class="btn btn-danger btn-lg">Reject</a>
+        <a href="/Administration/Panel/Reject/@Model.Username" class="btn btn-danger btn-lg">Reject</a>
     </div>
 </div>
+}

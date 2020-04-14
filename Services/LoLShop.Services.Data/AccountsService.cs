@@ -8,7 +8,6 @@
     using LoLShop.Data.Models;
     using LoLShop.Web.ViewModels.Accounts;
 
-
     public class AccountsService : IAccountsService
     {
         private readonly IRepository<Account> accountsRepository;
@@ -33,6 +32,13 @@
             };
 
             await this.accountsRepository.AddAsync(account);
+            await this.accountsRepository.SaveChangesAsync();
+        }
+
+        public async Task RemoveAccount(string Username)
+        {
+            var account = this.accountsRepository.All().FirstOrDefault(x => x.Username == Username);
+            this.accountsRepository.Delete(account);
             await this.accountsRepository.SaveChangesAsync();
         }
 
