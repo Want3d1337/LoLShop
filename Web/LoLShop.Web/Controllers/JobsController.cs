@@ -1,6 +1,7 @@
 ﻿namespace LoLShop.Web.Controllers
 {
     using System.Threading.Tasks;
+
     using LoLShop.Data.Models;
     using LoLShop.Services.Data;
     using LoLShop.Web.ViewModels.Jobs;

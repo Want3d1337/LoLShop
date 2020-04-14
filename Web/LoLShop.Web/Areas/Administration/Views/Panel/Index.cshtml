@@ -1,28 +1,61 @@
-﻿@model LoLShop.Web.ViewModels.Accounts.SellAccountInputModel;
+﻿@model LoLShop.Web.Areas.Administration.ViewModels.AdministrationViewModel;
+
 
 <hr />
 <h1 class="panel-title">Administration Panel</h1>
-<h2 class="panel-text">Accounts</h2>
 
-@if (string.IsNullOrEmpty(Model.Username))
-{
-    <h3 class="no-accounts-text">There are currently no accounts to approve!</h3>
-}
+<div class="row">
+    <div class="col-sm-4">
+        <h2 class="panel-text" style="text-align:center">Accounts</h2>
 
-else
-{
-<div class="card" style="width: 18rem; margin-left:30px; color:#fff; margin-top:30px;">
-    <img class="card-img-top" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586819541/yasuo_s6iikx.jpg" alt="Card image cap">
-    <p class="card-paragraph" style="margin-top:10px;">Region: @Model.Region</p>
-    <p class="card-paragraph">Champions: @Model.ChampionsCount</p>
-    <p class="card-paragraph">Skins: @Model.SkinsCount</p>
-    <p class="card-paragraph">Blue Essence: @Model.BlueEssence</p>
-    <p class="card-paragraph">Riot Points: @Model.RiotPoints</p>
-    <p class="card-paragraph">Username: @Model.Username</p>
-    <p class="card-paragraph">Password: @Model.Password</p>
-    <div class="card-body">
-        <a href="/Administration/Panel/Approve/@Model.Username" class="btn btn-primary btn-lg">Approve</a>
-        <a href="/Administration/Panel/Reject/@Model.Username" class="btn btn-danger btn-lg">Reject</a>
+        @if (string.IsNullOrEmpty(Model.Account.Username))
+        {
+            <h3 class="no-accounts-text" style="text-align:center">There are currently no accounts to approve!</h3>
+        }
+
+        else
+        {
+            <div class="card" style="width: 18rem; margin-left:180px; color:#fff; margin-top:30px;">
+                <img class="card-img-top" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586819541/yasuo_s6iikx.jpg" alt="Card image cap">
+                <p class="card-paragraph" style="margin-top:10px;">Region: @Model.Account.Region</p>
+                <p class="card-paragraph">Champions: @Model.Account.ChampionsCount</p>
+                <p class="card-paragraph">Skins: @Model.Account.SkinsCount</p>
+                <p class="card-paragraph">Blue Essence: @Model.Account.BlueEssence</p>
+                <p class="card-paragraph">Riot Points: @Model.Account.RiotPoints</p>
+                <p class="card-paragraph">Username: @Model.Account.Username</p>
+                <p class="card-paragraph">Password: @Model.Account.Password</p>
+                <div class="card-body">
+                    <a href="/Administration/Panel/Approve/@Model.Account.Username" class="btn btn-primary btn-lg">Approve</a>
+                    <a href="/Administration/Panel/Reject/@Model.Account.Username" class="btn btn-danger btn-lg">Reject</a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-sm-4">
+        <h2 class="panel-text" style="text-align:center">Job Applications</h2>
+
+        @if (string.IsNullOrEmpty(Model.Application.Name))
+        {
+            <h3 class="no-accounts-text" style="text-align:center">There are currently no job applications!</h3>
+        }
+
+        else
+        {
+            <div class="card" style="width: 18rem; margin-left:180px; color:#fff; margin-top:30px;">
+                <img class="card-img-top" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586819541/yasuo_s6iikx.jpg" alt="Card image cap">
+                <p class="card-paragraph" style="margin-top:10px;">Age: @Model.Application.Age</p>
+                <p class="card-paragraph">Name: @Model.Application.Name</p>
+                <p class="card-paragraph">Country: @Model.Application.Country</p>
+                <p class="card-paragraph">Position: @Model.Application.Position</p>
+                <p class="card-paragraph">Rank: @Model.Application.Rank</p>
+                <p class="card-paragraph">Champions: @Model.Application.Champions</p>
+                <p class="card-paragraph">Description: @Model.Application.Description</p>
+                <div class="card-body">
+                    <a href="/Administration/Panel/JobApprove/@Model.Application.UserId/@Model.Application.Position" class="btn btn-primary btn-lg">Approve</a>
+                    <a href="/Administration/Panel/JobReject/@Model.Application.UserId" class="btn btn-danger btn-lg">Reject</a>
+                </div>
+            </div>
+        }
     </div>
 </div>
-}

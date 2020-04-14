@@ -11,7 +11,7 @@
 
         Account GetFirstAccount();
 
-        Task RemoveAccount(string username);
+        Task RejectAccount(string username);
 
         Task ApproveAccount(string username);
     }

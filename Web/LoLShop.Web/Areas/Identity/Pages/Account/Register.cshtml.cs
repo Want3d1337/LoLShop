@@ -56,6 +56,10 @@
             returnUrl = returnUrl ?? "/";
             if (this.ModelState.IsValid)
             {
+                if(await this.userManager.FindByNameAsync(this.Input.Username) != null)
+                {
+                    return this.Page();
+                }
                 var user = new ApplicationUser
                 {
                     UserName = this.Input.Username,

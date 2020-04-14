@@ -3,16 +3,19 @@
     using System.Threading.Tasks;
 
     using LoLShop.Services.Data;
+    using LoLShop.Web.Areas.Administration.ViewModels;
     using LoLShop.Web.ViewModels.Accounts;
     using Microsoft.AspNetCore.Mvc;
 
     public class PanelController : AdministrationController
     {
         private readonly IAccountsService accountsService;
+        private readonly IJobsService jobsService;
 
-        public PanelController(IAccountsService accountsService)
+        public PanelController(IAccountsService accountsService, IJobsService jobsService)
         {
             this.accountsService = accountsService;
+            this.jobsService = jobsService;
         }
 
         [HttpGet]
@@ -20,6 +23,9 @@
         {
             var account = this.accountsService.GetFirstAccount();
             var accountModel = new SellAccountInputModel();
+
+            var application = this.jobsService.GetFirstApplication();
+            var applicationModel = new ApplicationViewModel();
 
             if (account != null)
             {
@@ -34,13 +40,35 @@
                     Region = account.Region,
                 };
             }
-            return this.View(accountModel);
+
+            if (application != null)
+            {
+                applicationModel = new ApplicationViewModel
+                {
+                    UserId = application.UserId,
+                    Age = application.Age,
+                    Name = application.Name,
+                    Country = application.Country,
+                    Position = application.Position,
+                    Rank = application.Rank,
+                    Champions = application.Champions,
+                    Description = application.Description,
+                };
+            }
+
+            var viewModel = new AdministrationViewModel
+            {
+                Account = accountModel,
+                Application = applicationModel,
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpGet("Administration/Panel/Reject/{Username}")]
         public async Task<IActionResult> Reject(string username)
         {
-            await this.accountsService.RemoveAccount(username);
+            await this.accountsService.RejectAccount(username);
 
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -52,5 +80,22 @@
 
             return this.RedirectToAction(nameof(this.Index));
         }
+
+        [HttpGet("Administration/Panel/JobApprove/{UserId}/{Position}")]
+        public async Task<IActionResult> JobApprove(string userId, string position)
+        {
+            await this.jobsService.ApproveApplication(userId, position);
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        [HttpGet("Administration/Panel/JobReject/{UserId}")]
+        public async Task<IActionResult> JobReject(string userId)
+        {
+            await this.jobsService.RejectApplication(userId);
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
     }
 }

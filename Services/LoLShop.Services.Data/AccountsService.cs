@@ -37,7 +37,7 @@
             await this.accountsRepository.SaveChangesAsync();
         }
 
-        public async Task RemoveAccount(string username)
+        public async Task RejectAccount(string username)
         {
             var account = this.accountsRepository.All().FirstOrDefault(x => x.Username == username);
             this.accountsRepository.Delete(account);
