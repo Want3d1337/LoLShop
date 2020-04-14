@@ -11,10 +11,12 @@
     public class AccountsService : IAccountsService
     {
         private readonly IRepository<Account> accountsRepository;
+        private readonly IRepository<ApprovedAccount> approvedAccountsRepository;
 
-        public AccountsService(IRepository<Account> accountsRepository)
+        public AccountsService(IRepository<Account> accountsRepository, IRepository<ApprovedAccount> approvedAccountsRepository)
         {
             this.accountsRepository = accountsRepository;
+            this.approvedAccountsRepository = approvedAccountsRepository;
         }
 
         public async Task CreateAsync(SellAccountInputModel inputModel, ApplicationUser user)
@@ -35,16 +37,35 @@
             await this.accountsRepository.SaveChangesAsync();
         }
 
-        public async Task RemoveAccount(string Username)
+        public async Task RemoveAccount(string username)
         {
-            var account = this.accountsRepository.All().FirstOrDefault(x => x.Username == Username);
+            var account = this.accountsRepository.All().FirstOrDefault(x => x.Username == username);
             this.accountsRepository.Delete(account);
             await this.accountsRepository.SaveChangesAsync();
+        }
+
+        public async Task ApproveAccount(string username)
+        {
+            var account = this.accountsRepository.All().FirstOrDefault(x => x.Username == username);
+            var approvedAccount = new ApprovedAccount
+            {
+                SellerId = account.SellerId,
+                Username = account.Username,
+                Password = account.Password,
+                Region = account.Region,
+            };
+
+            this.accountsRepository.Delete(account);
+            await this.accountsRepository.SaveChangesAsync();
+
+            await this.approvedAccountsRepository.AddAsync(approvedAccount);
+            await this.approvedAccountsRepository.SaveChangesAsync();
         }
 
         public Account GetFirstAccount()
         {
             return this.accountsRepository.All().FirstOrDefault();
         }
+
     }
 }

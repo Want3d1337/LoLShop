@@ -15,6 +15,8 @@ namespace LoLShop.Services.Data
 
         Account GetFirstAccount();
 
-        Task RemoveAccount(string Username);
+        Task RemoveAccount(string username);
+
+        Task ApproveAccount(string username);
     }
 }

@@ -38,9 +38,17 @@
         }
 
         [HttpGet("Administration/Panel/Reject/{Username}")]
-        public async Task<IActionResult> Reject(string Username)
+        public async Task<IActionResult> Reject(string username)
         {
-            await this.accountsService.RemoveAccount(Username);
+            await this.accountsService.RemoveAccount(username);
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        [HttpGet("Administration/Panel/Approve/{Username}")]
+        public async Task<IActionResult> Approve(string username)
+        {
+            await this.accountsService.ApproveAccount(username);
 
             return this.RedirectToAction(nameof(this.Index));
         }

@@ -26,6 +26,8 @@
 
         public DbSet<Account> SoldAccounts { get; set; }
 
+        public DbSet<ApprovedAccount> ApprovedAccounts { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
