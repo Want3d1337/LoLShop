@@ -1,9 +1,5 @@
-﻿
-namespace LoLShop.Services.Data
+﻿namespace LoLShop.Services.Data
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.Threading.Tasks;
 
     using LoLShop.Data.Models;

@@ -16,21 +16,24 @@
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IAccountsService accountService;
+        private readonly IApprovedAccountsService approvedAccountsService;
 
-        public AccountsController(UserManager<ApplicationUser> userManager, IAccountsService accountService)
+        public AccountsController(UserManager<ApplicationUser> userManager, IAccountsService accountService, IApprovedAccountsService approvedAccountsService)
         {
             this.userManager = userManager;
             this.accountService = accountService;
+            this.approvedAccountsService = approvedAccountsService;
         }
 
         [HttpGet]
         public async Task<IActionResult> All()
         {
-            return this.View();
+            var accounts = this.approvedAccountsService.GetAllAccountsRegion();
+            return this.View(accounts);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Sell()
+        public IActionResult Sell()
         {
             return this.View();
         }
