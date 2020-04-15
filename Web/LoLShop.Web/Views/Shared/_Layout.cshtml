@@ -41,6 +41,10 @@
                                 <li><a href="/Accounts/All">Accounts</a></li>
                                 <li><a href="/Jobs/Apply">Jobs</a></li>
                                 <li><a href="/Users/AccountDetails">My Account</a></li>
+                                @if (this.User.IsInRole(GlobalConstants.BoosterRoleName) || this.User.IsInRole(GlobalConstants.CoachRoleName))
+                                {
+                                    <li><a href="/Employees/Dashboard/Index">Dashboard</a></li>
+                                }
                                 <li><a href="/Identity/Account/Logout">Logout</a></li>
                                 @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                                 {

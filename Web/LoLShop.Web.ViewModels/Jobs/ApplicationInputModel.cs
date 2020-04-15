@@ -5,7 +5,7 @@
     using LoLShop.Data.Models;
     using LoLShop.Services.Mapping;
 
-    public class ApplicationInputModel : IMapTo<Application>
+    public class ApplicationInputModel
     {
         [Required]
         public int Age { get; set; }

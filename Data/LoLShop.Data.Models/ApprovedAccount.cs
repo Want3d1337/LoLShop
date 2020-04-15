@@ -1,5 +1,4 @@
-﻿
-namespace LoLShop.Data.Models
+﻿namespace LoLShop.Data.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;

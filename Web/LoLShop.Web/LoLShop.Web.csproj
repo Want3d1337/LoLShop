@@ -39,4 +39,8 @@
     <ProjectReference Include="..\LoLShop.Web.Infrastructure\LoLShop.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\LoLShop.Web.ViewModels\LoLShop.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Employees\ViewModels\" />
+  </ItemGroup>
 </Project>
