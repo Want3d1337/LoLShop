@@ -79,5 +79,16 @@
 
             await this.userManager.AddToRoleAsync(user, GlobalConstants.CoachRoleName);
         }
+
+        public bool IsUserApplied(string userId)
+        {
+            var returnValue = false;
+            if (this.applicationRepository.All().FirstOrDefault(x => x.UserId == userId) != null)
+            {
+                returnValue = true;
+            }
+
+            return returnValue;
+        }
     }
 }

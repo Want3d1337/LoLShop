@@ -21,5 +21,7 @@
         Task RegisterBoosterAsync(string userId);
 
         Task RegisterCoachAsync(string userId);
+
+        bool IsUserApplied(string userId);
     }
 }

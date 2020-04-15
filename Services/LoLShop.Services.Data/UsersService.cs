@@ -27,19 +27,13 @@
             return user;
         }
 
-        public async Task UpdateAsync(EditViewModel inputModel)
+        public async Task UpdateAsync(EditInputModel inputModel)
         {
             var user = this.usersRepository.All().FirstOrDefault(x => x.Id == inputModel.UserId);
 
-            if (!string.IsNullOrEmpty(inputModel.Rank))
-            {
-                user.Rank = inputModel.Rank;
-            }
+            user.Rank = inputModel.Rank;
 
-            if (!string.IsNullOrEmpty(inputModel.Champions))
-            {
-                user.Champions = inputModel.Champions;
-            }
+            user.Champions = inputModel.Champions;
 
             if (inputModel.NewImage != null)
             {

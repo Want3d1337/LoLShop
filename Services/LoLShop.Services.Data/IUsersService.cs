@@ -12,6 +12,6 @@
     {
         ApplicationUser GetById(string userId);
 
-        Task UpdateAsync(EditViewModel inputModel);
+        Task UpdateAsync(EditInputModel inputModel);
     }
 }

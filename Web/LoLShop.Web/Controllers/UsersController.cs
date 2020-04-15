@@ -47,7 +47,7 @@
         {
             var user = await this.userManager.GetUserAsync(this.User);
 
-            var viewModel = new EditViewModel
+            var viewModel = new EditInputModel
             {
                 UserId = user.Id,
                 AvatarImageUrl = user.AvatarImageUrl,
@@ -59,7 +59,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(EditViewModel inputModel)
+        public async Task<IActionResult> Edit(EditInputModel inputModel)
         {
             if (!this.ModelState.IsValid)
             {

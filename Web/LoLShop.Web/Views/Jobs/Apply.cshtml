@@ -1,9 +1,14 @@
 ﻿@model LoLShop.Web.ViewModels.Jobs.ApplicationInputModel;
-
 <hr />
 <h1 class="jobs-title">Apply for a job</h1>
 <h2 class="jobs-under-title">Fill the form below and start earning money!</h2>
 
+@if (ViewBag.IsUserApplied)
+{
+    <p class="already-applied">You have already applied for a job! Please wait while our administrators review your application!</p>
+}
+else
+{
 <form method="post">
     <div class="form-row job-rows-margin">
         <div class="col job-cols-leftmargin">
@@ -50,4 +55,5 @@
         <button class="btn btn-primary btn-lg" type="submit" asp-area="" asp-controller="Jobs" asp-action="Apply">SEND APPLICATION</button>
     </div>
 </form>
+}
 
