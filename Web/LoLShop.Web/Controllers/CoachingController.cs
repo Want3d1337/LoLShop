@@ -23,5 +23,11 @@
 
             return this.View(viewModel);
         }
+
+        [HttpGet("/Coaching/Order/{UserId}")]
+        public async Task<IActionResult> Order()
+        {
+            return this.View();
+        }
     }
 }

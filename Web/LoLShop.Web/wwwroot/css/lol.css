@@ -96,3 +96,12 @@ a:hover
     font-size: 28px;
     text-align: center;
 }
+.order-inputs {
+    margin-left:200px;
+    margin-right:200px;
+    margin-top:40px;
+}
+.order-title {
+    text-align: center;
+    margin-top: 80px;
+}
