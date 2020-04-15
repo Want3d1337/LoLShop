@@ -81,6 +81,7 @@
             services.AddTransient<IApprovedAccountsService, ApprovedAccountsService>();
             services.AddTransient<IJobsService, JobsService>();
             services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<ICoachingService, CoachingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

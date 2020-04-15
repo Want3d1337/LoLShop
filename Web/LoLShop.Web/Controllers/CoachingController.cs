@@ -4,15 +4,24 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
+    using LoLShop.Services.Data;
     using Microsoft.AspNetCore.Mvc;
 
     public class CoachingController : BaseController
     {
-        [HttpGet]
-        public IActionResult Coaches()
+        private readonly ICoachingService coachingService;
+
+        public CoachingController(ICoachingService coachingService)
         {
-            return this.View();
+            this.coachingService = coachingService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Coaches()
+        {
+            var viewModel = await this.coachingService.GetAllCoaches();
+
+            return this.View(viewModel);
         }
     }
 }

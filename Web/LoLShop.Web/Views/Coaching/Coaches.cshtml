@@ -1,13 +1,17 @@
-﻿<hr />
+﻿@model IEnumerable<LoLShop.Web.ViewModels.Coaching.CoachViewModel>;
+<hr />
 <h1 class="coaches-title">Coaches</h1>
 <div class="container">
     <div class="row">
+        @foreach (var coach in Model)
+        {
         <div class="col-md-4">
             <div class="card" style="width: 18rem; color:#fff;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="@coach.ImageUrl" class="card-img-top" alt="Profile Image">
                 <div class="card-body">
-                    <h5 class="card-title">Username</h5>
-                    <p class="card-text">Rank</p>
+                    <h5 class="card-title">@coach.Username</h5>
+                    <p class="card-text">@coach.Rank</p>
+                    <p class="card-text">@coach.Champions</p>
                 </div>
                 <div class="card-body">
                     <a href="#" class="card-link">Card link</a>
@@ -15,6 +19,7 @@
                 </div>
             </div>
         </div>
+        }
     </div>
 </div>
 

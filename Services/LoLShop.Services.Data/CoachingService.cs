@@ -19,9 +19,20 @@
             this.userManager = userManager;
         }
 
-        public Task<IEnumerable<CoachViewModel>> GetAllCoaches()
+        public async Task<IEnumerable<CoachViewModel>> GetAllCoaches()
         {
-            throw new System.NotImplementedException();
+            var users = await this.userManager.GetUsersInRoleAsync(GlobalConstants.CoachRoleName);
+
+            var models = users.Select(x => new CoachViewModel
+            {
+                UserId = x.Id,
+                Username = x.UserName,
+                Rank = x.Rank,
+                Champions = x.Champions,
+                ImageUrl = x.AvatarImageUrl,
+            }).ToArray();
+
+            return models;
         }
     }
 }

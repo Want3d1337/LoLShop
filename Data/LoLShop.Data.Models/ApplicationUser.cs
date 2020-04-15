@@ -4,6 +4,7 @@ namespace LoLShop.Data.Models
     using System;
     using System.Collections.Generic;
 
+    using LoLShop.Common;
     using LoLShop.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,7 @@ namespace LoLShop.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.CreatedOn = DateTime.UtcNow;
+            this.AvatarImageUrl = GlobalConstants.DefaultAccountImageUrl;
         }
 
         // Audit info

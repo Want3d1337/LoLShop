@@ -1,7 +1,7 @@
 ﻿namespace LoLShop.Web.Controllers
 {
     using System.Threading.Tasks;
-
+    using LoLShop.Common;
     using LoLShop.Data.Models;
     using LoLShop.Services.Data;
     using LoLShop.Web.ViewModels.Users;
@@ -39,10 +39,6 @@
                 Champions = user.Champions,
             };
 
-            viewModel.AvatarImageUrl = viewModel.AvatarImageUrl == null
-                ? "https://res.cloudinary.com/lolshop-cloud/image/upload/v1586952164/avatar_yswuru.jpg"
-                : user.AvatarImageUrl;
-
             return this.View(viewModel);
         }
 
@@ -58,10 +54,6 @@
                 Rank = user.Rank,
                 Champions = user.Champions,
             };
-
-            viewModel.AvatarImageUrl = viewModel.AvatarImageUrl == null
-                ? "https://res.cloudinary.com/lolshop-cloud/image/upload/v1586952164/avatar_yswuru.jpg"
-                : user.AvatarImageUrl;
 
             return this.View(viewModel);
         }
