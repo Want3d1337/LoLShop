@@ -51,6 +51,9 @@ a:hover
 .card-paragraph {
     margin-left:10px;
 }
+.card-title {
+    color:azure;
+}
 .card-body {
     text-align:center;
 }
@@ -81,4 +84,8 @@ a:hover
 }
 .job-cols-rightmargin {
     margin-right: 250px;
+}
+.coaches-title {
+    text-align: center;
+    margin-top:50px;
 }

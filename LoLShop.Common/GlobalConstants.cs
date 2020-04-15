@@ -9,5 +9,7 @@
         public const string CoachRoleName = "Coach";
 
         public const string UserRoleName = "User";
+
+        public const string CloudFolderForUserImages = "user_images";
     }
 }

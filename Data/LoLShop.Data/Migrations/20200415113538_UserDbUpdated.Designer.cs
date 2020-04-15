@@ -4,14 +4,16 @@ using LoLShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoLShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200415113538_UserDbUpdated")]
+    partial class UserDbUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,7 +167,7 @@ namespace LoLShop.Data.Migrations
                     b.Property<int>("ApprovedAccounts")
                         .HasColumnType("int");
 
-                    b.Property<string>("AvatarImageUrl")
+                    b.Property<string>("AvatarImageId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Champions")

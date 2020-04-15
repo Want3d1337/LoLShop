@@ -1,0 +1,38 @@
+﻿@model LoLShop.Web.ViewModels.Users.EditViewModel;
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div>
+            <h2 style="text-align: center">Update your details</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="d-flex flex-row justify-content-center">
+                    <div>
+                        <img src="@Model.AvatarImageUrl" class="rounded-circle">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 form">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="col-lg-8">
+                        <div>
+                            <input asp-for="Rank" type="text" placeholder="Rank...">
+                        </div>
+                        <div>
+                            <input asp-for="Champions" type="text" placeholder="Main Champions...">
+                        </div>
+                        <div>
+                            <label style="margin: 0; font-size: large">Change Account Image:</label>
+                            <input asp-for="NewImage" type="file" name="NewImage" accept=".png,.jpg,.jpeg" style="background-color: transparent; border-color: transparent; margin: 0; padding: 10px 10px; color: #ffd000; width: 60%; text-align-last: left">
+                        </div>
+                    </div>
+                    <div class="col justify-content-center">
+                        <button class="btn btn-warning btn-lg" type="submit" asp-area="" asp-controller="Users" asp-action="Edit"> Edit profile</button>
+                        <a class="btn btn-outline-warning btn-lg" href="/Users/AccountDetails"> Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

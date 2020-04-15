@@ -6,6 +6,7 @@ namespace LoLShop.Services.Data
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
     using LoLShop.Data.Common.Repositories;
     using LoLShop.Data.Models;
     using LoLShop.Web.ViewModels.Accounts;

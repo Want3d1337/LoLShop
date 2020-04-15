@@ -1,0 +1,47 @@
+﻿@model LoLShop.Web.ViewModels.Users.DetailsViewModel;
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="d-flex flex-row justify-content-center">
+                    <div>
+                        <img src="@Model.AvatarImageUrl" alt="Profile Picture" class="rounded-circle">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col">
+                        <div>Profile of</div>
+                        <h3>@Model.Username</h3>
+                    </div>
+
+                </div>
+                <div class="row text-center mb-4 mb-md-3">
+                    <div class="col-12 col-sm col-lg-4 mb-3 mb-sm-0">
+                        <div class="thin-border py-2" data-toggle="tooltip">
+                            <h5>Rank: @Model.Rank</h5>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm col-lg-4">
+                        <div class="thin-border py-2" data-toggle="tooltip">
+                            <h5>Main Champions: @Model.Champions</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center mb-4 mb-md-3">
+                    <div class="col-4 col-md-auto">
+                        <h5>Approved Accounts: @Model.ApprovedAccounts</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center mb-4 mb-md-3">
+                <div class="col-4 col-md-auto">
+                        <a class="btn btn-warning btn-lg" href="/Users/Edit">Edit Account</a>
+                        <a class="btn btn-danger btn-lg" href="">Delete Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
