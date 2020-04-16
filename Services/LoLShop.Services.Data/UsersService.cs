@@ -7,7 +7,9 @@
     using LoLShop.Data.Common.Repositories;
     using LoLShop.Data.Models;
     using LoLShop.Services;
+    using LoLShop.Web.ViewModels.Administration;
     using LoLShop.Web.ViewModels.Users;
+    using Microsoft.AspNetCore.Identity;
 
     public class UsersService : IUsersService
     {
@@ -20,11 +22,32 @@
             this.cloudinaryService = cloudinaryService;
         }
 
+        public async Task AddFundsAsync(ApplicationUser user, double funds)
+        {
+            user.Funds += funds;
+
+            this.usersRepository.Update(user);
+            await this.usersRepository.SaveChangesAsync();
+        }
+
         public ApplicationUser GetById(string userId)
         {
             var user = this.usersRepository.All().FirstOrDefault(x => x.Id == userId);
 
             return user;
+        }
+
+        public double GetUserFunds(ApplicationUser user)
+        {
+            return user.Funds;
+        }
+
+        public async Task RemoveFundsAsync(ApplicationUser user, double funds)
+        {
+            user.Funds -= funds;
+
+            this.usersRepository.Update(user);
+            await this.usersRepository.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(EditInputModel inputModel)

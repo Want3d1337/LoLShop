@@ -37,6 +37,7 @@
                 ApprovedAccounts = user.ApprovedAccounts,
                 Rank = user.Rank,
                 Champions = user.Champions,
+                Funds = user.Funds,
             };
 
             return this.View(viewModel);

@@ -1,5 +1,5 @@
 ﻿@model LoLShop.Web.Areas.Administration.ViewModels.AdministrationViewModel;
-
+@using LoLShop.Web.ViewModels.Administration
 
 <hr />
 <h1 class="panel-title">Administration Panel</h1>
@@ -57,5 +57,8 @@
                 </div>
             </div>
         }
+    </div>
+    <div class="col-sm-4">
+        @await Html.PartialAsync("_UsernameAddFunds.cshtml", new UsernameFundsInputModel { })
     </div>
 </div>

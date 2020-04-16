@@ -13,5 +13,7 @@
         public const string CloudFolderForUserImages = "user_images";
 
         public const string DefaultAccountImageUrl = "https://res.cloudinary.com/lolshop-cloud/image/upload/v1586952164/avatar_yswuru.jpg";
+
+        public const double CoachingPricePerHour = 10;
     }
 }

@@ -54,5 +54,9 @@
             return models;
         }
 
+        public CoachOrder GetFirstOrder()
+        {
+            return this.coachOrderRepository.All().FirstOrDefault();
+        }
     }
 }

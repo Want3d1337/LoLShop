@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<LoLShop.Web.ViewModels.Coaching.CoachViewModel>;
+@using LoLShop.Common
 <hr />
 <h1 class="coaches-title">Coaches</h1>
 <div class="container">
@@ -12,7 +13,7 @@
                     <h5 class="card-title">@coach.Username</h5>
                     <p class="card-text">@coach.Rank</p>
                     <p class="card-text">@coach.Champions</p>
-                    <p style="margin-bottom:-20px;"><em>10$ per hour</em></p>
+                    <p style="margin-bottom:-20px;"><em>$@GlobalConstants.CoachingPricePerHour per hour</em></p>
                 </div>
                 <div class="card-body" style="text-align:center">
                     <a href="/Coaching/Order/@coach.UserId" class="btn btn-success btn-lg">ORDER NOW</a>

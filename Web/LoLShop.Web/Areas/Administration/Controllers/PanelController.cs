@@ -1,21 +1,27 @@
 ﻿namespace LoLShop.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
-
+    using LoLShop.Data.Models;
     using LoLShop.Services.Data;
     using LoLShop.Web.Areas.Administration.ViewModels;
     using LoLShop.Web.ViewModels.Accounts;
+    using LoLShop.Web.ViewModels.Administration;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class PanelController : AdministrationController
     {
         private readonly IAccountsService accountsService;
         private readonly IJobsService jobsService;
+        private readonly IUsersService usersService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public PanelController(IAccountsService accountsService, IJobsService jobsService)
+        public PanelController(IAccountsService accountsService, IJobsService jobsService, IUsersService usersService, UserManager<ApplicationUser> userManager)
         {
             this.accountsService = accountsService;
             this.jobsService = jobsService;
+            this.usersService = usersService;
+            this.userManager = userManager;
         }
 
         [HttpGet]
@@ -97,5 +103,15 @@
             return this.RedirectToAction(nameof(this.Index));
         }
 
+        [HttpPost]
+
+        public async Task<IActionResult> AddFunds(UsernameFundsInputModel inputModel)
+        {
+            var user = await this.userManager.FindByNameAsync(inputModel.Username);
+
+            await this.usersService.AddFundsAsync(user, inputModel.Funds);
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
     }
 }

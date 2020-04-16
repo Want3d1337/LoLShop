@@ -19,5 +19,7 @@
         public string Rank { get; set; }
 
         public string Champions { get; set; }
+
+        public double Funds { get; set; }
     }
 }

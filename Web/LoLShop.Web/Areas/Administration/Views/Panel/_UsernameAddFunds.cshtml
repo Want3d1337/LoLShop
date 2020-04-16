@@ -1,0 +1,18 @@
+﻿@model LoLShop.Web.ViewModels.Administration.UsernameFundsInputModel;
+
+<form method="post">
+    <div class="container" style="margin-bottom:80px;">
+        <div class="row order-inputs">
+            <span asp-validation-for="Username" class="text-danger"></span>
+            <input asp-for="Username" type="text" class="form-control" placeholder="Username...">
+        </div>
+        <div class="row order-inputs">
+            <span asp-validation-for="Funds" class="text-danger"></span>
+            <input asp-for="Funds" type="number" class="form-control" placeholder="Funds...">
+        </div>
+    </div>
+
+    <div class="account-button" style="margin-bottom:100px;">
+        <button class="btn btn-primary btn-lg" type="submit" asp-controller="Panel" asp-action="AddFunds">ADD</button>
+    </div>
+</form>
