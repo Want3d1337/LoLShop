@@ -14,6 +14,8 @@
             this.CreatedOn = DateTime.UtcNow;
         }
 
+        public string BoosterId { get; set; }
+
         [Required]
         public string CurrentRank { get; set; }
 

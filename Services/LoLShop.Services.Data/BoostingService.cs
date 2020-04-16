@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -30,6 +31,20 @@
 
             await this.boostOrdersRepository.AddAsync(boostOrder);
             await this.boostOrdersRepository.SaveChangesAsync();
+        }
+
+        public BoostOrderViewModel[] GetAllBoostOrders()
+        {
+            var models = this.boostOrdersRepository.All().Select(x => new BoostOrderViewModel
+            {
+                BoosterId = x.BoosterId,
+                CurrentRank = x.CurrentRank,
+                Ranks = x.Ranks,
+                Username = x.Username,
+                Password = x.Password,
+            }).ToArray();
+
+            return models;
         }
     }
 }

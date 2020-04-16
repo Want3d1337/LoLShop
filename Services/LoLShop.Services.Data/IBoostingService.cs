@@ -10,5 +10,7 @@
     public interface IBoostingService
     {
         Task AddAsync(PurchaseInputModel inputModel);
+
+        BoostOrderViewModel[] GetAllBoostOrders();
     }
 }

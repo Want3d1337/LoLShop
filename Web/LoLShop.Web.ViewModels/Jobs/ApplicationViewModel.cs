@@ -1,4 +1,4 @@
-﻿namespace LoLShop.Web.Areas.Administration.ViewModels
+﻿namespace LoLShop.Web.ViewModels.Jobs
 {
     using System;
     using System.Collections.Generic;

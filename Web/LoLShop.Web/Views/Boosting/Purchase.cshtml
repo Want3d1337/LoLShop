@@ -1,8 +1,8 @@
 ﻿@model LoLShop.Web.ViewModels.Boosting.PurchaseInputModel;
+@using LoLShop.Common;
 
 <hr />
 <h1 class="order-title">Boosting</h1>
-<img src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1587037777/766-7668658_lol-boosting-ranks-illustration_jo8amz.jpg" style="text-align:center" />
 <h2 class="jobs-under-title">Fill the form below to proceed:</h2>
 <form method="post">
     <div class="container" style="margin-bottom:80px;">
@@ -25,6 +25,7 @@
     </div>
 
     <div class="account-button" style="margin-bottom:100px;">
+        <p style="text-align:center">Price Per Rank: $@GlobalConstants.BoostingPricePerRank</p>
         <button class="btn btn-success btn-lg" type="submit" asp-controller="Boosting" asp-action="Purchase">PURCHASE NOW</button>
     </div>
 </form>

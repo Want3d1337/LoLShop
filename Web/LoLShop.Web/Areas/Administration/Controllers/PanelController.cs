@@ -7,6 +7,7 @@
     using LoLShop.Web.Areas.Administration.ViewModels;
     using LoLShop.Web.ViewModels.Accounts;
     using LoLShop.Web.ViewModels.Administration;
+    using LoLShop.Web.ViewModels.Jobs;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 

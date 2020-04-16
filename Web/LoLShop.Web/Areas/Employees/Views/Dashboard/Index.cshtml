@@ -1,4 +1,4 @@
-﻿@model LoLShop.Web.ViewModels.Coaching.OrderViewModel;
+﻿@model LoLShop.Web.Areas.Employees.ViewModels.DashboardViewModel;
 @using LoLShop.Common;
 
 <hr />
@@ -9,18 +9,18 @@
         <h2 class="panel-text" style="text-align:center">Coaching Orders</h2>
         @if (this.User.IsInRole(GlobalConstants.CoachRoleName))
         {
-            @if (string.IsNullOrEmpty(Model.GameName))
+            @if (string.IsNullOrEmpty(Model.CoachOrder.GameName))
             {
                 <h3 class="no-accounts-text" style="text-align:center">There are currently no orders!</h3>
             }
             else
             {
                 <div class="card" style="width: 18rem; margin-left:180px; color:#fff; margin-top:30px;">
-                    <img class="card-img-top" src="@Model.ImageUrl" alt="Card image cap">
-                    <p class="card-paragraph" style="margin-top:10px;">In-Game Name: @Model.GameName</p>
-                    <p class="card-paragraph">Region: @Model.Region</p>
-                    <p class="card-paragraph">Discord Tag: @Model.DiscordTag</p>
-                    <p class="card-paragraph">Purchased Hours: @Model.Hours</p>
+                    <img class="card-img-top" src="@Model.CoachOrder.ImageUrl" alt="Card image cap">
+                    <p class="card-paragraph" style="margin-top:10px;">In-Game Name: @Model.CoachOrder.GameName</p>
+                    <p class="card-paragraph">Region: @Model.CoachOrder.Region</p>
+                    <p class="card-paragraph">Discord Tag: @Model.CoachOrder.DiscordTag</p>
+                    <p class="card-paragraph">Purchased Hours: @Model.CoachOrder.Hours</p>
                     <div class="card-body">
                         <a href="/Employees/Dashboard/CoachOrderFinish" class="btn btn-success btn-lg">FINISHED</a>
                     </div>
@@ -33,11 +33,30 @@
         }
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-3">
         <h2 class="panel-text" style="text-align:center">Boosting Orders</h2>
         @if (this.User.IsInRole(GlobalConstants.BoosterRoleName))
         {
-
+            @if (!Model.BoostOrders.Any())
+            {
+                <h3 class="no-accounts-text" style="text-align:center">There are currently no orders!</h3>
+            }
+            else
+            {
+                foreach (var orders in Model.BoostOrders)
+                {
+                    <div class="col-sm-4">
+                        <div class="card" style="width: 18rem; margin-left:180px; color:#fff; margin-top:30px;">
+                            <img class="card-img-top" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1587045622/2506_Challenger_np2k7n.png" alt="Boost Image">
+                            <p class="card-paragraph" style="margin-top:10px;">Current Rank: @orders.CurrentRank</p>
+                            <p class="card-paragraph">Ranks To Boost: @orders.Ranks</p>
+                            <div class="card-body">
+                                <a href="/Employees/Dashboard/BoostOrderAccept/{@orders.Username}" class="btn btn-success btn-lg">ACCEPT</a>
+                            </div>
+                        </div>
+                    </div>
+                }   
+            }   
         }
         else
         {

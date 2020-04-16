@@ -4,9 +4,10 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class OrderViewModel
+    public class CoachOrderViewModel
     {
         public string CoachId { get; set; }
+
         public string ImageUrl { get; set; }
 
         public string GameName { get; set; }
