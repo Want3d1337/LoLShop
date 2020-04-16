@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
+    using LoLShop.Common;
     using LoLShop.Data.Models;
     using LoLShop.Services.Data;
     using LoLShop.Web.ViewModels.Accounts;
@@ -15,18 +17,20 @@
     public class AccountsController : BaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IAccountsService accountService;
+        private readonly IAccountsService accountsService;
         private readonly IApprovedAccountsService approvedAccountsService;
+        private readonly IUsersService usersService;
 
-        public AccountsController(UserManager<ApplicationUser> userManager, IAccountsService accountService, IApprovedAccountsService approvedAccountsService)
+        public AccountsController(UserManager<ApplicationUser> userManager, IAccountsService accountsService, IApprovedAccountsService approvedAccountsService, IUsersService usersService)
         {
             this.userManager = userManager;
-            this.accountService = accountService;
+            this.accountsService = accountsService;
             this.approvedAccountsService = approvedAccountsService;
+            this.usersService = usersService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> All()
+        public IActionResult All()
         {
             var accounts = this.approvedAccountsService.GetAllAccountsRegion();
             return this.View(accounts);
@@ -48,9 +52,39 @@
 
             var user = await this.userManager.GetUserAsync(this.User);
 
-            await this.accountService.CreateAsync(inputModel, user);
+            await this.accountsService.CreateAsync(inputModel, user);
 
             return this.Redirect("/Accounts/All");
+        }
+
+        [HttpGet("Accounts/PurchaseAccount/{region}")]
+        public async Task<IActionResult> PurchaseAccount(Regions region)
+        {
+            var account = await this.approvedAccountsService.PurchaseAccountAsync(region);
+
+            var buyer = await this.userManager.GetUserAsync(this.User);
+
+            var price = GlobalConstants.AccountPrice;
+
+            if (buyer.Funds < price || account == null)
+            {
+                return this.RedirectToAction(nameof(this.All));
+            }
+
+            var seller = await this.userManager.FindByIdAsync(account.SellerId);
+
+            await this.usersService.AddFundsAsync(seller, price);
+
+            await this.usersService.RemoveFundsAsync(buyer, price);
+
+            var viewModel = new PurchaseAccountViewModel
+            {
+                Region = account.Region,
+                Username = account.Username,
+                Password = account.Password,
+            };
+
+            return this.View(viewModel);
         }
     }
 }

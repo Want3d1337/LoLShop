@@ -17,5 +17,7 @@
         public const double CoachingPricePerHour = 10;
 
         public const double BoostingPricePerRank = 5;
+
+        public const double AccountPrice = 5;
     }
 }

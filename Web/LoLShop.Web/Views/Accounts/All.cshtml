@@ -1,4 +1,6 @@
-﻿@model IEnumerable<LoLShop.Web.ViewModels.Accounts.AllAccountsRegionModel>; 
+﻿@model IEnumerable<LoLShop.Web.ViewModels.Accounts.AllAccountsRegionModel>;
+@using LoLShop.Data.Models;
+@using LoLShop.Common; 
 
     <hr style="width:50%; margin:auto">
     <h1 style="text-align: center; margin-top:20px;margin-bottom:20px">
@@ -13,33 +15,33 @@
     <div class="container">
         <div class="row" style="margin-top: 70px;">
             <div class="col-sm">
-                <a href="/Accounts/EUW">
+                <a href="/Accounts/PurchaseAccount/@Regions.EUW">
                     <img style="margin:auto;" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586598813/EUW_ahkjry.jpg">
                     <h2 class="account-text">EUW CHAMPION ACCOUNT</h2>
-                    <p class="account-price">$5.00 - @Model.Where(x => x.Region == LoLShop.Data.Models.Regions.EUW).Count() in stock</p>
+                    <p class="account-price">$@GlobalConstants.AccountPrice - @Model.Where(x => x.Region == LoLShop.Data.Models.Regions.EUW).Count() in stock</p>
                 </a>
             </div>
             <div class="col-sm">
-                <a href="/Accounts/EUNE">
+                <a href="/Accounts/PurchaseAccount/@Regions.EUNE">
                     <img style="margin:auto;" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586601664/eune_pxq7so.jpg">
                     <h2 class="account-text">EUNE CHAMPION ACCOUNT</h2>
-                    <p class="account-price">$5.00 - @Model.Where(x => x.Region == LoLShop.Data.Models.Regions.EUNE).Count() in stock</p>
+                    <p class="account-price">$@GlobalConstants.AccountPrice - @Model.Where(x => x.Region == LoLShop.Data.Models.Regions.EUNE).Count() in stock</p>
                 </a>
             </div>
         </div>
         <div class="row" style="margin-top: 50px;">
             <div class="col-sm">
-                 <a href="/Accounts/NA">
+                 <a href="/Accounts/PurchaseAccount/@Regions.NA">
                      <img style="margin:auto;" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586601655/na_kfeeds.jpg">
                      <h2 class="account-text">NA CHAMPION ACCOUNT</h2>
-                     <p class="account-price">$5.00 - @Model.Where(x => x.Region == LoLShop.Data.Models.Regions.NA).Count() in stock</p>
+                     <p class="account-price">$@GlobalConstants.AccountPrice - @Model.Where(x => x.Region == LoLShop.Data.Models.Regions.NA).Count() in stock</p>
                  </a>
             </div>
             <div class="col-sm">
-                 <a href="/Accounts/RU">
+                 <a href="/Accounts/PurchaseAccount/@Regions.RU">
                      <img style="margin:auto;" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586601658/ru_god1tg.jpg">
                      <h2 class="account-text">RU CHAMPION ACCOUNT</h2>
-                     <p class="account-price">$5.00 - @Model.Where(x => x.Region == LoLShop.Data.Models.Regions.RU).Count() in stock</p>
+                     <p class="account-price">$@GlobalConstants.AccountPrice - @Model.Where(x => x.Region == LoLShop.Data.Models.Regions.RU).Count() in stock</p>
                  </a>
             </div>
         </div>

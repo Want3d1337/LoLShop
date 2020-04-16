@@ -29,5 +29,21 @@ namespace LoLShop.Services.Data
 
             return accounts;
         }
+
+        public async Task<ApprovedAccount> PurchaseAccountAsync(Regions region)
+        {
+            var account = this.approvedAccountsRepository.All().FirstOrDefault(x => x.Region == region);
+
+            if (account == null)
+            {
+                return null;
+            }
+
+            this.approvedAccountsRepository.Delete(account);
+
+            await this.approvedAccountsRepository.SaveChangesAsync();
+
+            return account;
+        }
     }
 }

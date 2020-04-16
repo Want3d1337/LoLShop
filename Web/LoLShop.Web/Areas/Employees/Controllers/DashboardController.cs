@@ -75,5 +75,15 @@
 
             return this.RedirectToAction(nameof(this.Index));
         }
+
+        [HttpGet("Employees/Dashboard/BoostOrderComplete/{Username}")]
+        public async Task<IActionResult> BoostOrderComplete(string username)
+        {
+            var booster = await this.userManager.GetUserAsync(this.User);
+
+            await this.boostingService.CompleteOrderAsync(username);
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
     }
 }

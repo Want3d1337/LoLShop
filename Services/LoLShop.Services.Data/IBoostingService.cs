@@ -12,5 +12,7 @@
         BoostOrderViewModel[] GetAllBoostOrders();
 
         Task AcceptOrderAsync(ApplicationUser booster, string username);
+
+        Task CompleteOrderAsync(string username);
     }
 }
