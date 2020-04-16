@@ -1,7 +1,14 @@
 ﻿@using System.Security.Claims;
 @using LoLShop.Common;
 @using Microsoft.Extensions.Configuration
+@using Microsoft.AspNetCore.Identity
+@using LoLShop.Data.Models
 @inject IConfiguration Configuration
+@inject UserManager<ApplicationUser> UserManager;
+
+@{
+    var user = await this.UserManager.GetUserAsync(this.User);
+}
 
 <!DOCTYPE html>
 <html>
@@ -37,15 +44,21 @@
                         <nav id="navigation" class="menu nav-collapse">
                             <ul>
                                 <li><a href="/">Home</a></li>
-                                <li><a href="/Coaching/Coaches">Coaching</a></li>
-                                <li><a href="/Accounts/All">Accounts</a></li>
+                                <li>
+                                    <a href="#">Shop</a>
+                                    <ul>
+                                        <li><a href="/Boosting">Boosting</a></li>
+                                        <li><a href="/Coaching/Coaches">Coaching</a></li>
+                                        <li><a href="/Accounts/All">Accounts</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="/Jobs/Apply">Jobs</a></li>
                                 <li><a href="/Users/AccountDetails">My Account</a></li>
+                                <li><a href="/Identity/Account/Logout">Logout</a></li>
                                 @if (this.User.IsInRole(GlobalConstants.BoosterRoleName) || this.User.IsInRole(GlobalConstants.CoachRoleName))
                                 {
                                     <li><a href="/Employees/Dashboard/Index">Dashboard</a></li>
                                 }
-                                <li><a href="/Identity/Account/Logout">Logout</a></li>
                                 @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                                 {
                                     <li><a href="/Administration/Panel/Index">Administration</a></li>
