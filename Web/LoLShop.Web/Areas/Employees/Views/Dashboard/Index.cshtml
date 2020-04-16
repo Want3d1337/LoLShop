@@ -1,5 +1,13 @@
 ﻿@model LoLShop.Web.Areas.Employees.ViewModels.DashboardViewModel;
 @using LoLShop.Common;
+@using LoLShop.Data.Models;
+@using Microsoft.AspNetCore.Identity;
+
+@inject UserManager<ApplicationUser> UserManager;
+
+@{ 
+    var user = await this.UserManager.GetUserAsync(this.User);
+}
 
 <hr />
 <h1 class="panel-title">Employees Dashboard</h1>
@@ -37,21 +45,30 @@
         <h2 class="panel-text" style="text-align:center">Boosting Orders</h2>
         @if (this.User.IsInRole(GlobalConstants.BoosterRoleName))
         {
-            @if (!Model.BoostOrders.Any())
+            @if (!Model.BoostOrders.Any(x => x.BoosterId == null || x.BoosterId == user.Id))
             {
                 <h3 class="no-accounts-text" style="text-align:center">There are currently no orders!</h3>
             }
             else
             {
-                foreach (var orders in Model.BoostOrders)
+                foreach (var order in Model.BoostOrders.Where(x => x.BoosterId == null || x.BoosterId == user.Id))
                 {
                     <div class="col-sm-4">
                         <div class="card" style="width: 18rem; margin-left:180px; color:#fff; margin-top:30px;">
                             <img class="card-img-top" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1587045622/2506_Challenger_np2k7n.png" alt="Boost Image">
-                            <p class="card-paragraph" style="margin-top:10px;">Current Rank: @orders.CurrentRank</p>
-                            <p class="card-paragraph">Ranks To Boost: @orders.Ranks</p>
+                            <p class="card-paragraph" style="margin-top:10px;">Current Rank: @order.CurrentRank</p>
+                            <p class="card-paragraph">Ranks To Boost: @order.Ranks</p>
                             <div class="card-body">
-                                <a href="/Employees/Dashboard/BoostOrderAccept/{@orders.Username}" class="btn btn-success btn-lg">ACCEPT</a>
+                                @if (order.BoosterId == user.Id)
+                                {
+                                    <p class="card-paragraph">Username: @order.Username</p>
+                                    <p class="card-paragraph">Password: @order.Password</p>
+                                    <a href="/Employees/Dashboard/BoostOrderComplete/@order.Username" class="btn btn-primary btn-lg">COMPLETE</a>
+                                }
+                                else
+                                {
+                                    <a href="/Employees/Dashboard/BoostOrderAccept/@order.Username" class="btn btn-success btn-lg">ACCEPT</a>
+                                }
                             </div>
                         </div>
                     </div>

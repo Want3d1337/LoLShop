@@ -4,10 +4,10 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using LoLShop.Data.Models;
     using LoLShop.Services.Data;
     using LoLShop.Web.Areas.Employees.ViewModels;
-    using LoLShop.Web.ViewModels.Boosting;
     using LoLShop.Web.ViewModels.Coaching;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -69,6 +69,10 @@
         [HttpGet("Employees/Dashboard/BoostOrderAccept/{Username}")]
         public async Task<IActionResult> BoostOrderAccept(string username)
         {
+            var booster = await this.userManager.GetUserAsync(this.User);
+
+            await this.boostingService.AcceptOrderAsync(booster, username);
+
             return this.RedirectToAction(nameof(this.Index));
         }
     }

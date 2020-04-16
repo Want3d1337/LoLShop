@@ -19,6 +19,16 @@
             this.boostOrdersRepository = boostOrdersRepository;
         }
 
+        public async Task AcceptOrderAsync(ApplicationUser booster, string username)
+        {
+            var order = this.boostOrdersRepository.All().FirstOrDefault(x => x.Username == username);
+
+            order.BoosterId = booster.Id;
+
+            this.boostOrdersRepository.Update(order);
+            await this.boostOrdersRepository.SaveChangesAsync();
+        }
+
         public async Task AddAsync(PurchaseInputModel inputModel)
         {
             var boostOrder = new BoostOrder

@@ -38,7 +38,9 @@
 
             var price = GlobalConstants.BoostingPricePerRank * inputModel.Ranks;
 
-            if (user.Funds < price)
+            var isUsernameOrdered = this.boostingService.GetAllBoostOrders().Any(x => x.Username == inputModel.Username);
+
+            if (user.Funds < price || isUsernameOrdered)
             {
                 return this.View();
             }
