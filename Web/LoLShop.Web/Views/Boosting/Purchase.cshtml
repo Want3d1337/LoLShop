@@ -1,0 +1,30 @@
+﻿@model LoLShop.Web.ViewModels.Boosting.PurchaseInputModel;
+
+<hr />
+<h1 class="order-title">Boosting</h1>
+<img src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1587037777/766-7668658_lol-boosting-ranks-illustration_jo8amz.jpg" style="text-align:center" />
+<h2 class="jobs-under-title">Fill the form below to proceed:</h2>
+<form method="post">
+    <div class="container" style="margin-bottom:80px;">
+        <div class="row order-inputs">
+            <span asp-validation-for="CurrentRank" class="text-danger"></span>
+            <input asp-for="CurrentRank" type="text" class="form-control" placeholder="Current Rank...">
+        </div>
+        <div class="row order-inputs">
+            <span asp-validation-for="Ranks" class="text-danger"></span>
+            <input asp-for="Ranks" type="number" class="form-control" placeholder="Ranks to boost...">
+        </div>
+        <div class="row order-inputs">
+            <span asp-validation-for="Username" class="text-danger"></span>
+            <input asp-for="Username" type="text" class="form-control" placeholder="Username for account...">
+        </div>
+        <div class="row order-inputs">
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Password for account...">
+        </div>
+    </div>
+
+    <div class="account-button" style="margin-bottom:100px;">
+        <button class="btn btn-success btn-lg" type="submit" asp-controller="Boosting" asp-action="Purchase">PURCHASE NOW</button>
+    </div>
+</form>

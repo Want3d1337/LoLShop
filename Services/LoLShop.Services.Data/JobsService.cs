@@ -13,12 +13,12 @@
 
     public class JobsService : IJobsService
     {
-        private readonly IRepository<Application> applicationRepository;
+        private readonly IRepository<Application> applicationsRepository;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public JobsService(IRepository<Application> applicationRepository, UserManager<ApplicationUser> userManager)
+        public JobsService(IRepository<Application> applicationsRepository, UserManager<ApplicationUser> userManager)
         {
-            this.applicationRepository = applicationRepository;
+            this.applicationsRepository = applicationsRepository;
             this.userManager = userManager;
         }
 
@@ -36,13 +36,13 @@
                 Description = inputModel.Description,
             };
 
-            await this.applicationRepository.AddAsync(application);
-            await this.applicationRepository.SaveChangesAsync();
+            await this.applicationsRepository.AddAsync(application);
+            await this.applicationsRepository.SaveChangesAsync();
         }
 
         public Application GetFirstApplication()
         {
-            return this.applicationRepository.All().FirstOrDefault();
+            return this.applicationsRepository.All().FirstOrDefault();
         }
 
         public async Task ApproveApplication(string userId, string position)
@@ -61,9 +61,9 @@
 
         public async Task RejectApplication(string userId)
         {
-            var application = this.applicationRepository.All().FirstOrDefault(x => x.UserId == userId);
-            this.applicationRepository.Delete(application);
-            await this.applicationRepository.SaveChangesAsync();
+            var application = this.applicationsRepository.All().FirstOrDefault(x => x.UserId == userId);
+            this.applicationsRepository.Delete(application);
+            await this.applicationsRepository.SaveChangesAsync();
         }
 
         public async Task RegisterBoosterAsync(string userId)
@@ -83,7 +83,7 @@
         public bool IsUserApplied(string userId)
         {
             var returnValue = false;
-            if (this.applicationRepository.All().FirstOrDefault(x => x.UserId == userId) != null)
+            if (this.applicationsRepository.All().FirstOrDefault(x => x.UserId == userId) != null)
             {
                 returnValue = true;
             }

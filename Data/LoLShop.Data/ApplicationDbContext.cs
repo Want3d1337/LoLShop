@@ -32,6 +32,8 @@
 
         public DbSet<CoachOrder> CoachOrders { get; set; }
 
+        public DbSet<BoostOrder> BoostOrders { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
