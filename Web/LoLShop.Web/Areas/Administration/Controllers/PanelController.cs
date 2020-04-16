@@ -1,6 +1,7 @@
 ﻿namespace LoLShop.Web.Areas.Administration.Controllers
 {
     using System.Threading.Tasks;
+
     using LoLShop.Data.Models;
     using LoLShop.Services.Data;
     using LoLShop.Web.Areas.Administration.ViewModels;

@@ -8,10 +8,12 @@
 
     public interface ICoachingService
     {
-        public Task<IEnumerable<CoachViewModel>> GetAllCoaches();
+        public Task<IEnumerable<CoachViewModel>> GetAllCoachesAsync();
 
         Task AddAsync(OrderInputModel inputModel);
 
-        CoachOrder GetFirstOrder();
+        CoachOrder GetFirstOrder(ApplicationUser coach);
+
+        Task FinishFirstOrderAsync(ApplicationUser coach);
     }
 }

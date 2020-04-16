@@ -30,7 +30,7 @@
         [HttpGet]
         public async Task<IActionResult> Coaches()
         {
-            var viewModel = await this.coachingService.GetAllCoaches();
+            var viewModel = await this.coachingService.GetAllCoachesAsync();
 
             return this.View(viewModel);
         }

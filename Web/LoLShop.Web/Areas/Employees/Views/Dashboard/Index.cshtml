@@ -1,4 +1,4 @@
-﻿@model
+﻿@model LoLShop.Web.ViewModels.Coaching.OrderViewModel;
 @using LoLShop.Common;
 
 <hr />
@@ -9,17 +9,24 @@
         <h2 class="panel-text" style="text-align:center">Coaching Orders</h2>
         @if (this.User.IsInRole(GlobalConstants.CoachRoleName))
         {
-            <div class="card" style="width: 18rem; margin-left:180px; color:#fff; margin-top:30px;">
-                <img class="card-img-top" src="https://res.cloudinary.com/lolshop-cloud/image/upload/v1586819541/yasuo_s6iikx.jpg" alt="Card image cap">
-                <p class="card-paragraph" style="margin-top:10px;">In-Game Name:</p>
-                <p class="card-paragraph">Region:</p>
-                <p class="card-paragraph">Discord Tag:</p>
-                <p class="card-paragraph">Purchased Hours:</p>
-                <div class="card-body">
-                    <a href="/Administration/Panel/Approve" class="btn btn-success btn-lg">FINISHED</a>
+            @if (string.IsNullOrEmpty(Model.GameName))
+            {
+                <h3 class="no-accounts-text" style="text-align:center">There are currently no orders!</h3>
+            }
+            else
+            {
+                <div class="card" style="width: 18rem; margin-left:180px; color:#fff; margin-top:30px;">
+                    <img class="card-img-top" src="@Model.ImageUrl" alt="Card image cap">
+                    <p class="card-paragraph" style="margin-top:10px;">In-Game Name: @Model.GameName</p>
+                    <p class="card-paragraph">Region: @Model.Region</p>
+                    <p class="card-paragraph">Discord Tag: @Model.DiscordTag</p>
+                    <p class="card-paragraph">Purchased Hours: @Model.Hours</p>
+                    <div class="card-body">
+                        <a href="/Employees/Dashboard/CoachOrderFinish" class="btn btn-success btn-lg">FINISHED</a>
+                    </div>
                 </div>
-            </div>
-        }
+            }
+         }
         else
         {
             <h3 class="no-accounts-text" style="text-align:center">You need to be a coach to unlock this tab!</h3>
