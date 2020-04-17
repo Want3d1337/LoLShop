@@ -47,6 +47,10 @@
         public async Task ApproveAccountAsync(string username)
         {
             var account = this.accountsRepository.All().FirstOrDefault(x => x.Username == username);
+
+            this.accountsRepository.Delete(account);
+            await this.accountsRepository.SaveChangesAsync();
+
             var approvedAccount = new ApprovedAccount
             {
                 SellerId = account.SellerId,
@@ -54,9 +58,6 @@
                 Password = account.Password,
                 Region = account.Region,
             };
-
-            this.accountsRepository.Delete(account);
-            await this.accountsRepository.SaveChangesAsync();
 
             await this.approvedAccountsRepository.AddAsync(approvedAccount);
             await this.approvedAccountsRepository.SaveChangesAsync();

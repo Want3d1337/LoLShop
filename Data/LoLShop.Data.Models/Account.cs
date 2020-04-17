@@ -38,7 +38,6 @@
         public string Password { get; set; }
 
         [Required]
-
         public Regions Region { get; set; }
     }
 }
