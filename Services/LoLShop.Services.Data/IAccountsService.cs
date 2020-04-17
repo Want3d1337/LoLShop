@@ -11,8 +11,8 @@
 
         Account GetFirstAccount();
 
-        Task RejectAccount(string username);
+        Task RejectAccountAsync(string username);
 
-        Task ApproveAccount(string username);
+        Task ApproveAccountAsync(string username);
     }
 }

@@ -37,14 +37,14 @@
             await this.accountsRepository.SaveChangesAsync();
         }
 
-        public async Task RejectAccount(string username)
+        public async Task RejectAccountAsync(string username)
         {
             var account = this.accountsRepository.All().FirstOrDefault(x => x.Username == username);
             this.accountsRepository.Delete(account);
             await this.accountsRepository.SaveChangesAsync();
         }
 
-        public async Task ApproveAccount(string username)
+        public async Task ApproveAccountAsync(string username)
         {
             var account = this.accountsRepository.All().FirstOrDefault(x => x.Username == username);
             var approvedAccount = new ApprovedAccount

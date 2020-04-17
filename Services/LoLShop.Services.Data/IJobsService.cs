@@ -14,9 +14,9 @@
 
         Application GetFirstApplication();
 
-        Task RejectApplication(string userId);
+        Task RejectApplicationAsync(string userId);
 
-        Task ApproveApplication(string userId, string position);
+        Task ApproveApplicationAsync(string userId, string position);
 
         Task RegisterBoosterAsync(string userId);
 

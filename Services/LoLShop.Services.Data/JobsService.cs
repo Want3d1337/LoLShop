@@ -45,7 +45,7 @@
             return this.applicationsRepository.All().FirstOrDefault();
         }
 
-        public async Task ApproveApplication(string userId, string position)
+        public async Task ApproveApplicationAsync(string userId, string position)
         {
             if (position == GlobalConstants.BoosterRoleName)
             {
@@ -56,10 +56,10 @@
                 await this.RegisterCoachAsync(userId);
             }
 
-            await this.RejectApplication(userId);
+            await this.RejectApplicationAsync(userId);
         }
 
-        public async Task RejectApplication(string userId)
+        public async Task RejectApplicationAsync(string userId)
         {
             var application = this.applicationsRepository.All().FirstOrDefault(x => x.UserId == userId);
 

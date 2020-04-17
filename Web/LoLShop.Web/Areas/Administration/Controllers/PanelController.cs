@@ -76,7 +76,7 @@
         [HttpGet("Administration/Panel/Reject/{Username}")]
         public async Task<IActionResult> Reject(string username)
         {
-            await this.accountsService.RejectAccount(username);
+            await this.accountsService.RejectAccountAsync(username);
 
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -84,7 +84,7 @@
         [HttpGet("Administration/Panel/Approve/{Username}")]
         public async Task<IActionResult> Approve(string username)
         {
-            await this.accountsService.ApproveAccount(username);
+            await this.accountsService.ApproveAccountAsync(username);
 
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -92,7 +92,7 @@
         [HttpGet("Administration/Panel/JobApprove/{UserId}/{Position}")]
         public async Task<IActionResult> JobApprove(string userId, string position)
         {
-            await this.jobsService.ApproveApplication(userId, position);
+            await this.jobsService.ApproveApplicationAsync(userId, position);
 
             return this.RedirectToAction(nameof(this.Index));
         }
@@ -100,7 +100,7 @@
         [HttpGet("Administration/Panel/JobReject/{UserId}")]
         public async Task<IActionResult> JobReject(string userId)
         {
-            await this.jobsService.RejectApplication(userId);
+            await this.jobsService.RejectApplicationAsync(userId);
 
             return this.RedirectToAction(nameof(this.Index));
         }
