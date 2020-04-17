@@ -1,4 +1,6 @@
 ﻿@model LoLShop.Web.ViewModels.Jobs.ApplicationInputModel;
+@using LoLShop.Common;
+
 <hr />
 <h1 class="jobs-title">Apply for a job</h1>
 <h2 class="jobs-under-title">Fill the form below and start earning money!</h2>
@@ -31,8 +33,8 @@ else
         <div class="col job-cols-leftmargin">
             <label for="PositionInput">Job Position:</label>
             <select asp-for="Position" class="form-control" id="selectPosition">
-                <option value="Booster">Booster</option>
-                <option value="Coach">Coach</option>
+                <option value=@GlobalConstants.BoosterRoleName>@GlobalConstants.BoosterRoleName</option>
+                <option value=@GlobalConstants.CoachRoleName>@GlobalConstants.CoachRoleName</option>
             </select>
         </div>
         <div class="col">

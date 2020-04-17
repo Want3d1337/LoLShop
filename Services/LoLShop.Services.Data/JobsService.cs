@@ -62,7 +62,9 @@
         public async Task RejectApplication(string userId)
         {
             var application = this.applicationsRepository.All().FirstOrDefault(x => x.UserId == userId);
+
             this.applicationsRepository.Delete(application);
+
             await this.applicationsRepository.SaveChangesAsync();
         }
 

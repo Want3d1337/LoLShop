@@ -111,7 +111,28 @@
         {
             var user = await this.userManager.FindByNameAsync(inputModel.Username);
 
+            if (user == null)
+            {
+                return this.RedirectToAction(nameof(this.Index));
+            }
+
             await this.usersService.AddFundsAsync(user, inputModel.Funds);
+
+            return this.RedirectToAction(nameof(this.Index));
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> PromoteUser(UsernamePromoteInputModel inputModel)
+        {
+            var user = await this.userManager.FindByNameAsync(inputModel.Username);
+
+            if (user == null)
+            {
+                return this.RedirectToAction(nameof(this.Index));
+            }
+
+            await this.userManager.AddToRoleAsync(user, inputModel.Role);
 
             return this.RedirectToAction(nameof(this.Index));
         }

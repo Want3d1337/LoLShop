@@ -5,7 +5,7 @@
 <h1 class="panel-title">Administration Panel</h1>
 
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-md-3">
         <h2 class="panel-text" style="text-align:center">Accounts</h2>
 
         @if (string.IsNullOrEmpty(Model.Account.Username))
@@ -32,7 +32,7 @@
         }
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-md-3">
         <h2 class="panel-text" style="text-align:center">Job Applications</h2>
 
         @if (string.IsNullOrEmpty(Model.Application.Name))
@@ -58,7 +58,10 @@
             </div>
         }
     </div>
-    <div class="col-sm-4">
+    <div class="col-md-2" style="margin-left:50px;">
         @await Html.PartialAsync("_UsernameAddFunds.cshtml", new UsernameFundsInputModel { })
+    </div>
+    <div class="col-md-2" style="margin-left:50px;">
+        @await Html.PartialAsync("_UsernamePromoteToRole.cshtml", new UsernamePromoteInputModel { })
     </div>
 </div>
