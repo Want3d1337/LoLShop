@@ -9,15 +9,19 @@
     public class SellAccountInputModel : IMapTo<Account>
     {
         [Required]
+        [Range(1, 160)]
         public int ChampionsCount { get; set; }
 
         [Required]
+        [Range(1, 1000)]
         public int SkinsCount { get; set; }
 
         [Required]
+        [Range(1, 500000)]
         public int BlueEssence { get; set; }
 
         [Required]
+        [Range(1, 15000)]
         public int RiotPoints { get; set; }
 
         [Required]

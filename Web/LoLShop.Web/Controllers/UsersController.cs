@@ -1,8 +1,7 @@
 ﻿namespace LoLShop.Web.Controllers
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
-    using LoLShop.Common;
+
     using LoLShop.Data.Models;
     using LoLShop.Services.Data;
     using LoLShop.Web.ViewModels.Users;
@@ -10,7 +9,6 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
 
     [Authorize]
     public class UsersController : BaseController

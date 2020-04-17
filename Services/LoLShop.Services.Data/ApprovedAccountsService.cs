@@ -1,5 +1,4 @@
-﻿
-namespace LoLShop.Services.Data
+﻿namespace LoLShop.Services.Data
 {
     using System;
     using System.Collections.Generic;

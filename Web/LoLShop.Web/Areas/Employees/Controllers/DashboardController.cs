@@ -1,8 +1,5 @@
 ﻿namespace LoLShop.Web.Areas.Employees.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
     using LoLShop.Data.Models;
@@ -18,7 +15,7 @@
         private readonly IBoostingService boostingService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public DashboardController(ICoachingService coachingService,IBoostingService boostingService, UserManager<ApplicationUser> userManager)
+        public DashboardController(ICoachingService coachingService, IBoostingService boostingService, UserManager<ApplicationUser> userManager)
         {
             this.coachingService = coachingService;
             this.boostingService = boostingService;

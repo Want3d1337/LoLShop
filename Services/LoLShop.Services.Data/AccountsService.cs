@@ -66,6 +66,5 @@
         {
             return this.accountsRepository.All().FirstOrDefault();
         }
-
     }
 }
