@@ -1,5 +1,12 @@
 ﻿@model LoLShop.Web.ViewModels.Jobs.ApplicationInputModel;
 @using LoLShop.Common;
+@using LoLShop.Data.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> UserManager;
+
+@{ 
+    var user = await this.UserManager.GetUserAsync(this.User);
+}
 
 <hr />
 <h1 class="jobs-title">Apply for a job</h1>
@@ -33,8 +40,14 @@ else
         <div class="col job-cols-leftmargin">
             <label for="PositionInput">Job Position:</label>
             <select asp-for="Position" class="form-control" id="selectPosition">
-                <option value=@GlobalConstants.BoosterRoleName>@GlobalConstants.BoosterRoleName</option>
-                <option value=@GlobalConstants.CoachRoleName>@GlobalConstants.CoachRoleName</option>
+                @if (!await this.UserManager.IsInRoleAsync(user, GlobalConstants.BoosterRoleName))
+                {
+                    <option value=@GlobalConstants.BoosterRoleName>@GlobalConstants.BoosterRoleName</option>
+                }
+                @if (!await this.UserManager.IsInRoleAsync(user, GlobalConstants.CoachRoleName))
+                {
+                    <option value=@GlobalConstants.CoachRoleName>@GlobalConstants.CoachRoleName</option>
+                }
             </select>
         </div>
         <div class="col">

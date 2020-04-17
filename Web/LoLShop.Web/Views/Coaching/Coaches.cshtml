@@ -1,25 +1,44 @@
 ﻿@model IEnumerable<LoLShop.Web.ViewModels.Coaching.CoachViewModel>;
 @using LoLShop.Common
+@using LoLShop.Data.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> UserManager;
+
+@{ 
+    var user = await this.UserManager.GetUserAsync(this.User);
+}
+
 <hr />
 <h1 class="coaches-title">Coaches</h1>
 <div class="container">
     <div class="row">
-        @foreach (var coach in Model)
+        @if (!Model.Any())
         {
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem; color:#fff;">
-                <img src="@coach.ImageUrl" class="card-img-top" alt="Profile Image">
-                <div class="card-body">
-                    <h5 class="card-title">@coach.Username</h5>
-                    <p class="card-text">@coach.Rank</p>
-                    <p class="card-text">@coach.Champions</p>
-                    <p style="margin-bottom:-20px;"><em>$@GlobalConstants.CoachingPricePerHour per hour</em></p>
+            <h3 class="no-accounts-text" style="text-align:center">There are no coaches at the moment!</h3>
+        }
+
+        else
+        {
+            @foreach (var coach in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem; color:#fff;">
+                        <img src="@coach.ImageUrl" class="card-img-top" alt="Profile Image">
+                        <div class="card-body">
+                            <h5 class="card-title">@coach.Username</h5>
+                            <p class="card-text">@coach.Rank</p>
+                            <p class="card-text">@coach.Champions</p>
+                            <p style="margin-bottom:-20px;"><em>$@GlobalConstants.CoachingPricePerHour per hour</em></p>
+                        </div>
+                        <div class="card-body" style="text-align:center">
+                            @if (coach.UserId != user.Id)
+                            {
+                                <a href="/Coaching/Order/@coach.UserId" class="btn btn-success btn-lg">ORDER NOW</a>
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body" style="text-align:center">
-                    <a href="/Coaching/Order/@coach.UserId" class="btn btn-success btn-lg">ORDER NOW</a>
-                </div>
-            </div>
-        </div>
+            }
         }
     </div>
 </div>

@@ -28,7 +28,9 @@
         public IActionResult Apply()
         {
             var userId = this.userManager.GetUserId(this.User);
+
             this.ViewBag.IsUserApplied = this.jobsService.IsUserApplied(userId);
+
             return this.View();
         }
 

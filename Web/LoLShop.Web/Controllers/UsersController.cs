@@ -1,5 +1,6 @@
 ﻿namespace LoLShop.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using LoLShop.Common;
     using LoLShop.Data.Models;
@@ -16,11 +17,13 @@
     {
         private readonly IUsersService usersService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public UsersController(IUsersService usersService, UserManager<ApplicationUser> userManager)
+        public UsersController(IUsersService usersService, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             this.usersService = usersService;
             this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         [HttpGet]

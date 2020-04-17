@@ -39,6 +39,7 @@
         public IActionResult Order(string coachId)
         {
             var inputModel = new OrderInputModel { CoachId = coachId };
+
             return this.View(inputModel);
         }
 
