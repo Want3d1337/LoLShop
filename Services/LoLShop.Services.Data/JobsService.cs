@@ -1,8 +1,6 @@
 ﻿namespace LoLShop.Services.Data
 {
-    using System;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using LoLShop.Common;
@@ -22,11 +20,11 @@
             this.userManager = userManager;
         }
 
-        public async Task CreateAsync(ApplicationInputModel inputModel, ApplicationUser user)
+        public async Task CreateAsync(ApplicationInputModel inputModel, string userId)
         {
             var application = new Application
             {
-                UserId = user.Id,
+                UserId = userId,
                 Age = inputModel.Age,
                 Name = inputModel.Name,
                 Country = inputModel.Country,
@@ -47,14 +45,9 @@
 
         public async Task ApproveApplicationAsync(string userId, string position)
         {
-            if (position == GlobalConstants.BoosterRoleName)
-            {
-                await this.RegisterBoosterAsync(userId);
-            }
-            else
-            {
-                await this.RegisterCoachAsync(userId);
-            }
+            var user = await this.userManager.FindByIdAsync(userId);
+
+            await this.userManager.AddToRoleAsync(user, position);
 
             await this.RejectApplicationAsync(userId);
         }
@@ -66,20 +59,6 @@
             this.applicationsRepository.Delete(application);
 
             await this.applicationsRepository.SaveChangesAsync();
-        }
-
-        public async Task RegisterBoosterAsync(string userId)
-        {
-            var user = await this.userManager.FindByIdAsync(userId);
-
-            await this.userManager.AddToRoleAsync(user, GlobalConstants.BoosterRoleName);
-        }
-
-        public async Task RegisterCoachAsync(string userId)
-        {
-            var user = await this.userManager.FindByIdAsync(userId);
-
-            await this.userManager.AddToRoleAsync(user, GlobalConstants.CoachRoleName);
         }
 
         public bool IsUserApplied(string userId)

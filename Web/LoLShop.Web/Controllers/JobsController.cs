@@ -51,9 +51,7 @@
                 Rank = inputModel.Rank,
             };
 
-            var user = await this.userManager.GetUserAsync(this.User);
-
-            await this.jobsService.CreateAsync(inputModel, user);
+            await this.jobsService.CreateAsync(inputModel, userId);
 
             await this.usersService.UpdateAsync(editModel);
 

@@ -10,17 +10,13 @@
 
     public interface IJobsService
     {
-        Task CreateAsync(ApplicationInputModel inputModel, ApplicationUser user);
+        Task CreateAsync(ApplicationInputModel inputModel, string userId);
 
         Application GetFirstApplication();
 
         Task RejectApplicationAsync(string userId);
 
         Task ApproveApplicationAsync(string userId, string position);
-
-        Task RegisterBoosterAsync(string userId);
-
-        Task RegisterCoachAsync(string userId);
 
         bool IsUserApplied(string userId);
     }
