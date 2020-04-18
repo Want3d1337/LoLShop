@@ -35,7 +35,6 @@
                 Username = user.UserName,
                 Email = user.Email,
                 AvatarImageUrl = user.AvatarImageUrl,
-                ApprovedAccounts = user.ApprovedAccounts,
                 Rank = user.Rank,
                 Champions = user.Champions,
                 Funds = user.Funds,

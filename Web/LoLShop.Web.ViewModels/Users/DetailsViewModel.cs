@@ -14,8 +14,6 @@
 
         public string AvatarImageUrl { get; set; }
 
-        public int ApprovedAccounts { get; set; }
-
         public string Rank { get; set; }
 
         public string Champions { get; set; }

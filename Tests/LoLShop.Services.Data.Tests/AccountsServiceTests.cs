@@ -4,7 +4,6 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using LoLShop.Data;
     using LoLShop.Data.Models;
     using LoLShop.Data.Repositories;
     using LoLShop.Services.Data.Tests.Common;
@@ -130,7 +129,7 @@
             var expectedResult = nullAccount;
 
             // Assert
-            Assert.True(expectedResult == actualResult, errorMessage);
+            Assert.True(actualResult == expectedResult, errorMessage);
         }
 
         [Fact]
