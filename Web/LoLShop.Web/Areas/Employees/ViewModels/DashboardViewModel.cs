@@ -1,5 +1,7 @@
 ﻿namespace LoLShop.Web.Areas.Employees.ViewModels
 {
+    using System.Collections.Generic;
+
     using LoLShop.Web.ViewModels.Boosting;
     using LoLShop.Web.ViewModels.Coaching;
 
@@ -7,6 +9,6 @@
     {
         public CoachOrderViewModel CoachOrder { get; set; }
 
-        public BoostOrderViewModel[] BoostOrders { get; set; }
+        public IEnumerable<BoostOrderViewModel> BoostOrders { get; set; }
     }
 }

@@ -15,13 +15,11 @@
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IRepository<CoachOrder> coachOrdersRepository;
-        private readonly IUsersService usersService;
 
-        public CoachingService(UserManager<ApplicationUser> userManager, IRepository<CoachOrder> coachOrdersRepository, IUsersService usersService)
+        public CoachingService(UserManager<ApplicationUser> userManager, IRepository<CoachOrder> coachOrdersRepository)
         {
             this.userManager = userManager;
             this.coachOrdersRepository = coachOrdersRepository;
-            this.usersService = usersService;
         }
 
         public async Task AddAsync(OrderInputModel inputModel)
@@ -43,10 +41,6 @@
         public async Task FinishFirstOrderAsync(ApplicationUser user)
         {
             var order = this.coachOrdersRepository.All().FirstOrDefault(x => x.CoachId == user.Id);
-
-            var price = order.Hours * GlobalConstants.CoachingPricePerHour;
-
-            await this.usersService.AddFundsAsync(user, price);
 
             this.coachOrdersRepository.Delete(order);
 

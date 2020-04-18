@@ -1,5 +1,6 @@
 ﻿namespace LoLShop.Services.Data
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using LoLShop.Data.Models;
@@ -9,7 +10,7 @@
     {
         Task AddAsync(PurchaseInputModel inputModel);
 
-        BoostOrderViewModel[] GetAllBoostOrders();
+        IEnumerable<BoostOrderViewModel> GetAllBoostOrders();
 
         Task AcceptOrderAsync(ApplicationUser booster, string username);
 

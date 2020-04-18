@@ -1,7 +1,9 @@
 ﻿namespace LoLShop.Web.Areas.Employees.Controllers
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
+    using LoLShop.Common;
     using LoLShop.Data.Models;
     using LoLShop.Services.Data;
     using LoLShop.Web.Areas.Employees.ViewModels;
@@ -13,12 +15,14 @@
     {
         private readonly ICoachingService coachingService;
         private readonly IBoostingService boostingService;
+        private readonly IUsersService usersService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public DashboardController(ICoachingService coachingService, IBoostingService boostingService, UserManager<ApplicationUser> userManager)
+        public DashboardController(ICoachingService coachingService, IBoostingService boostingService, IUsersService usersService, UserManager<ApplicationUser> userManager)
         {
             this.coachingService = coachingService;
             this.boostingService = boostingService;
+            this.usersService = usersService;
             this.userManager = userManager;
         }
 
@@ -54,9 +58,14 @@
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> CoachOrderFinish()
+        [HttpGet("Employees/Dashboard/CoachOrderFinish/{hours}")]
+        public async Task<IActionResult> CoachOrderFinish(int hours)
         {
             var coach = await this.userManager.GetUserAsync(this.User);
+
+            var price = GlobalConstants.CoachingPricePerHour * hours;
+
+            await this.usersService.AddFundsAsync(coach, price);
 
             await this.coachingService.FinishFirstOrderAsync(coach);
 
@@ -77,6 +86,12 @@
         public async Task<IActionResult> BoostOrderComplete(string username)
         {
             var booster = await this.userManager.GetUserAsync(this.User);
+
+            var order = this.boostingService.GetAllBoostOrders().FirstOrDefault(x => x.Username == username);
+
+            var price = GlobalConstants.BoostingPricePerRank * order.Ranks;
+
+            await this.usersService.AddFundsAsync(booster, price);
 
             await this.boostingService.CompleteOrderAsync(username);
 
