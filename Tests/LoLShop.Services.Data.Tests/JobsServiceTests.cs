@@ -5,7 +5,6 @@
     using System.Threading.Tasks;
 
     using LoLShop.Common;
-    using LoLShop.Data;
     using LoLShop.Data.Models;
     using LoLShop.Data.Repositories;
     using LoLShop.Services.Data.Tests.Common;
