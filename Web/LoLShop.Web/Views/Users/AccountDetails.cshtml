@@ -1,44 +1,13 @@
 ﻿@model LoLShop.Web.ViewModels.Users.DetailsViewModel;
 
-<section id="page-title-area" class="section-padding overlay">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <div class="d-flex flex-row justify-content-center">
-                    <div>
-                        <img src="@Model.AvatarImageUrl" alt="Profile Image" class="rounded-circle">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col">
-                        <div>Profile of</div>
-                        <h3>@Model.Username</h3>
-                    </div>
-                    <div class="col">
-                        <h3>Funds: @Model.Funds</h3>
-                    </div>
-
-                </div>
-                <div class="row text-center mb-4 mb-md-3">
-                    <div class="col-12 col-sm col-lg-4 mb-3 mb-sm-0">
-                        <div class="thin-border py-2" data-toggle="tooltip">
-                            <h5>Rank: @Model.Rank</h5>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm col-lg-4">
-                        <div class="thin-border py-2" data-toggle="tooltip">
-                            <h5>Main Champions: @Model.Champions</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row text-center mb-4 mb-md-3">
-                <div class="col-4 col-md-auto">
-                        <a class="btn btn-warning btn-lg" href="/Users/Edit">Edit Account</a>
-                </div>
-            </div>
-        </div>
+<div style="text-align:center;">
+    <div class="profile-image">
+        <img src="@Model.AvatarImageUrl" alt="Profile Image" class="rounded-circle">
     </div>
-</section>
+    <h2 class="form-fields">Username: @Model.Username</h2>
+    <h2 class="form-fields">Email: @Model.Email</h2>
+    <h2 class="form-fields">Funds: $@Model.Funds</h2>
+    <h2 class="form-fields">Ranks: @Model.Rank</h2>
+    <h2 class="form-fields">Champions: @Model.Champions</h2>
+    <a class="btn btn-warning btn-lg" href="/Users/Edit">Edit Account</a>
+</div>

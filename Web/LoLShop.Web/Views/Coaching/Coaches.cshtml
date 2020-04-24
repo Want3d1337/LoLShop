@@ -11,14 +11,14 @@
 <hr />
 <h1 class="coaches-title">Coaches</h1>
 <div class="container">
-    <div class="row">
-        @if (!Model.Any())
-        {
-            <h3 class="no-accounts-text" style="text-align:center">There are no coaches at the moment!</h3>
-        }
+    @if (!Model.Any())
+    {
+        <h3 class="no-accounts-text" style="text-align:center">There are no coaches at the moment!</h3>
+    }
+    else
+    {
 
-        else
-        {
+        <div class="row">
             @foreach (var coach in Model)
             {
                 <div class="col-md-4">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             }
-        }
-    </div>
+        </div>
+    }
 </div>
 

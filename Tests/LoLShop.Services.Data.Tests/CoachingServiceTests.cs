@@ -1,11 +1,9 @@
 ﻿namespace LoLShop.Services.Data.Tests
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-
     using System.Threading.Tasks;
+
     using LoLShop.Common;
     using LoLShop.Data;
     using LoLShop.Data.Models;
@@ -13,7 +11,9 @@
     using LoLShop.Services.Data.Tests.Common;
     using LoLShop.Web.ViewModels.Coaching;
     using Microsoft.AspNetCore.Identity;
+
     using Moq;
+
     using Xunit;
 
     public class CoachingServiceTests

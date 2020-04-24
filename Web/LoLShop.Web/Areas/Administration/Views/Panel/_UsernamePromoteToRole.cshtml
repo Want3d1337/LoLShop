@@ -1,8 +1,10 @@
 ﻿@model LoLShop.Web.ViewModels.Administration.UsernamePromoteInputModel;
 @using LoLShop.Common;
 
+<h2 class="panel-text" style="text-align:center">Add Role</h2>
+
 <form method="post">
-    <div class="container" style="margin-bottom:80px;">
+    <div class="container" style="margin-bottom:80px; align-content:center">
         <div class="row">
             <span asp-validation-for="Username" class="text-danger"></span>
             <input asp-for="Username" type="text" class="form-control" placeholder="Username...">

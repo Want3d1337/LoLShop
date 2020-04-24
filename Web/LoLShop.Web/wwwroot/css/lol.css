@@ -105,3 +105,9 @@ a:hover
     text-align: center;
     margin-top: 80px;
 }
+.profile-image {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
