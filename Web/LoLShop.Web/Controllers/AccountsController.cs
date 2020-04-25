@@ -60,16 +60,18 @@
         [HttpGet("Accounts/PurchaseAccount/{region}")]
         public async Task<IActionResult> PurchaseAccount(Regions region)
         {
-            var account = await this.approvedAccountsService.PurchaseAccountAsync(region);
-
             var buyer = await this.userManager.GetUserAsync(this.User);
 
             var price = GlobalConstants.AccountPrice;
 
-            if (buyer.Funds < price || account == null)
+            var accountsCount = this.approvedAccountsService.GetAllAccountsRegion().Where(x => x.Region == region).Count();
+
+            if (buyer.Funds < price || accountsCount == 0)
             {
                 return this.RedirectToAction(nameof(this.All));
             }
+
+            var account = await this.approvedAccountsService.PurchaseAccountAsync(region);
 
             var seller = await this.userManager.FindByIdAsync(account.SellerId);
 
