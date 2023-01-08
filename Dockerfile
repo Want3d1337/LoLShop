@@ -3,11 +3,11 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY LoLShop.Web/*.csproj .
+COPY /Web/LoLShop.Web/*.csproj .
 RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
-COPY LoLShop.Web/. .
+COPY /Web/LoLShop.Web/* .
 RUN dotnet publish -c Release -o /app --use-current-runtime --self-contained false --no-restore
 
 # final stage/image
