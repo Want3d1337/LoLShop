@@ -7,7 +7,7 @@ COPY /Web/LoLShop.Web/*.csproj .
 RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
-COPY /Web/LoLShop.Web/. .
+COPY /LoLShop/. .
 RUN dotnet publish -c Release -o /app --use-current-runtime --self-contained false --no-restore
 
 # final stage/image
