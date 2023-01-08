@@ -7,7 +7,6 @@ COPY /Web/LoLShop.Web/*.csproj .
 RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
-COPY /LoLShop/. .
 COPY /Web/. .
 COPY /Data/. .
 COPY /Services/. .
