@@ -8,6 +8,11 @@ RUN dotnet restore --use-current-runtime
 
 # copy everything else and build app
 COPY /LoLShop/. .
+COPY /Web/. .
+COPY /Data/. .
+COPY /Services/. .
+COPY /LoLShop.Common/. .
+COPY stylecop.json .
 RUN dotnet publish -c Release -o /app --use-current-runtime --self-contained false --no-restore
 
 # final stage/image
